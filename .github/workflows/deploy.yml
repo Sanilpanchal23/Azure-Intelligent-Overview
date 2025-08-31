@@ -1,0 +1,70 @@
+# Name of your workflow
+name: Update Azure Prices and Deploy to Pages
+
+# Controls when the workflow will run
+on:
+  # Runs every 30 minutes
+  schedule:
+    - cron: '*/30 * * * *'
+  
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+  # Also runs on pushes to the main branch if script files change
+  push:
+    branches: ["main"]
+    paths:
+      - 'scripts/**'
+      - '.github/workflows/**'
+
+# Grant the necessary permissions for the workflow to run
+permissions:
+  contents: write  # Allows the action to commit the updated JSON file
+  pages: write     # Allows the action to deploy to GitHub Pages
+  id-token: write  # Required for authentication with GitHub Pages
+
+# Defines the series of tasks that will be executed
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      # 1. Check out your repository's code
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 2. Set up a Python environment
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11' # You can change this to your desired version
+
+      # 3. Install the Python dependencies
+      - name: Install Python dependencies
+        run: pip install -r scripts/requirements.txt
+
+      # 4. Run your Python script to fetch the latest prices
+      - name: Run script to fetch Azure prices
+        run: python scripts/azure_price_scanner.py
+
+      # 5. Commit the updated azure_prices.json file back to the repository
+      - name: Commit updated data file
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: "Automated: Update Azure VM prices"
+          file_pattern: 'dashboard/data/azure_prices.json'
+
+      # 6. Set up the GitHub Pages environment for deployment
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      # 7. Upload the website files as a build artifact
+      - name: Upload site artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          # IMPORTANT: Use the 'dashboard' folder as the source
+          path: './dashboard'
+
+      # 8. Deploy the uploaded artifact to GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4

@@ -1,0 +1,956 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Price Intelligence Dashboard | Premium Cloud Cost Management</title>
+    <meta name="description" content="Advanced Azure VM price intelligence dashboard with real-time pricing, cost optimization, and intelligent recommendations for cloud professionals.">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- Light Mode & Core Styles --- */
+        :root {
+            --azure-blue: #0078d4;
+            --azure-purple: #8661c5;
+            --azure-teal: #008575;
+            --azure-green: #107c10;
+            --gradient-primary: linear-gradient(135deg, var(--azure-blue), var(--azure-purple));
+            --gradient-secondary: linear-gradient(135deg, var(--azure-teal), var(--azure-green));
+            --shadow-sm: 0 2px 8px rgba(0, 120, 212, 0.08);
+            --shadow-md: 0 4px 20px rgba(0, 120, 212, 0.12);
+            --shadow-lg: 0 8px 40px rgba(0, 120, 212, 0.18);
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background-color: #f7f7f7;
+            color: #344054;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        /* --- Navigation Bar --- */
+        .navbar-premium {
+            background: rgb(22, 22, 36);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            border-bottom: 1px solid #e2e8f0;
+            padding: 0.75rem 0;
+            transition: var(--transition-smooth);
+        }
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.4rem;
+            background: var(--gradient-primary);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        #live-status {
+            font-weight: 500;
+            color: #000000;
+            background-color: #dedfdf;
+            padding: 0.5rem 1rem;
+            border-radius: var(--radius-md);
+            border: 1px solid #e2e8f0;
+        }
+        #live-status .live-dot {
+            width: 10px;
+            height: 10px;
+            background-color: #22c55e;
+            border-radius: 50%;
+            display: inline-block;
+            animation: pulse 2s infinite;
+        }
+        @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); } 70% { box-shadow: 0 0 0 10px rgba(34, 197, 94, 0); } 100% { box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); } }
+
+        /* --- Cards & Layout --- */
+        .glass-card {
+            background: #ffffff;
+            border-radius: var(--radius-lg);
+            border: 1px solid #e2e8f0;
+            box-shadow: var(--shadow-sm);
+            transition: var(--transition-smooth);
+            overflow: hidden;
+        }
+        .glass-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-md);
+            border-color: #cdd8e7;
+        }
+        .card-header {
+            background: rgb(59, 59, 94);
+            border-bottom: 1px solid #e2e8f0;
+            font-weight: 600;
+            color: #ffffff;
+            padding: 1rem 1.5rem;
+            font-size: 1rem;
+        }
+
+        /* --- Stat Cards --- */
+        .stat-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+        .stat-item { text-align: center; padding: 1rem; }
+        .stat-value { font-size: 1.8rem; font-weight: 700; color: #1e293b; margin-bottom: 0.25rem; }
+        .stat-label { font-size: 0.8rem; color: #64748b; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
+        
+        /* --- Main Content Stat Cards --- */
+        .main-stat-card .card-body { display: flex; flex-direction: column; justify-content: center; align-items: center; }
+        .main-stat-card .fs-1 { font-size: 2.5rem !important; }
+        .main-stat-card h4 { font-size: 1.75rem; }
+
+        /* --- Table --- */
+        .premium-table { border: 1px solid #e2e8f0; border-radius: var(--radius-md); }
+        .premium-table th { background-color: rgb(59, 59, 94); color: #fbfbfb; font-weight: 600; padding: 1rem 1.5rem; border-bottom: 2px 2px solid var(--azure-blue); font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; cursor: pointer; }
+        .premium-table td { padding: 1rem 1.5rem; border-top: 1px solid #e2e8f0; vertical-align: middle; font-weight: 500; color: #334155; }
+        .premium-table tbody tr:hover { background-color: #f8fafc; }
+        .badge { font-size: 0.75rem; font-weight: 600; padding: 0.4em 0.8em; }
+        .badge-windows { background: #0078d4; color: white; }
+        .badge-linux { background: #334155; color: white; }
+        .badge-spot { background: #f59e0b; color: white; }
+        .premium-table tbody tr:nth-of-type(odd) {
+    background-color: #f8fafc; /* A very light gray, matches header */
+}
+
+        /* --- Buttons & Forms --- */
+        .btn { border-radius: var(--radius-md); padding: 0.6rem 1.25rem; font-weight: 600; font-size: 0.9rem; transition: var(--transition-smooth); }
+        .btn-primary-premium { background: var(--azure-blue); color: white; border-color: var(--azure-blue); }
+        .btn-primary-premium:hover { background: #005a9e; border-color: #005a9e; transform: translateY(-2px); }
+        .btn-outline-premium { border-color: #cbd5e1; color: #334155; }
+        .btn-outline-premium:hover { background-color: #f1f5f9; border-color: #94a3b8; }
+        
+        .form-control, .form-select { border-radius: var(--radius-md); border-color: #cbd5e1; padding: 0.6rem 1rem; font-weight: 500; }
+        .form-control:focus, .form-select:focus { border-color: var(--azure-blue); box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.15); }
+        .form-range::-webkit-slider-thumb { background-color: var(--azure-blue); }
+        .form-range::-moz-range-thumb { background-color: var(--azure-blue); }
+        .form-select {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2364748b' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+        }
+
+        /* --- Tabs & Quick Actions --- */
+        .nav-tabs-premium { border-bottom: 2px solid #e2e8f0; }
+        .nav-tabs-premium .nav-link { border: 0; padding: 0.75rem 0; margin: 0 1.25rem; color: #64748b; font-weight: 600; position: relative; }
+        .nav-tabs-premium .nav-link.active, .nav-tabs-premium .nav-link:hover { color: var(--azure-blue); }
+        .nav-tabs-premium .nav-link.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: var(--azure-blue); border-radius: 2px; }
+        
+        .quick-actions-bar {
+            padding: 0.75rem 1rem;
+            background-color: #f8fafc;
+            border-radius: var(--radius-md);
+            border: 1px solid #e2e8f0;
+        }
+
+        /* --- Loading & Misc --- */
+        .loading-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, rgba(0, 120, 212, 0.95), rgba(134, 97, 197, 0.95)); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); display: none; justify-content: center; align-items: center; z-index: 1060; flex-direction: column; transition: opacity 0.3s ease; }
+        .text-gradient { background: var(--gradient-primary); -webkit-background-clip: text; background-clip: text; color: transparent; }
+        footer { background: #1e293b; color: #f1f5f9; }
+
+        /* --- Dark Mode Styles --- */
+        body.dark-mode { background: #0f172a; color: #cbd5e1; }
+        .dark-mode .navbar-premium { background: #1e293b; border-bottom-color: #334155; }
+        .dark-mode #live-status { background-color: #334155; color: #e2e8f0; border-color: #475569; }
+        .dark-mode .glass-card, .dark-mode .premium-table { background: #1e293b; border-color: #334155; }
+        .dark-mode .glass-card:hover { border-color: #475569; }
+        .dark-mode .card-header { background: #1a2436; border-bottom-color: #334155; color: #e2e8f0; }
+        .dark-mode .stat-value { color: #f1f5f9; }
+        .dark-mode .stat-label, .dark-mode .text-muted { color: #94a3b8 !important; }
+        .dark-mode .premium-table th { background-color: #1a2436; border-bottom-color: #475569; color: #94a3b8; }
+        .dark-mode .premium-table td { border-top-color: #334155; color: #000000; }
+        .dark-mode .premium-table tbody tr:hover { background-color: #283449; }
+        .dark-mode .form-control, .dark-mode .form-select { background: #334155; border-color: #475569; color: #e2e8f0; }
+        .dark-mode .form-control:focus, .dark-mode .form-select:focus { background: #334155; border-color: var(--azure-blue); }
+        .dark-mode .form-select { 
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%2394a3b8' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e");
+            background-repeat: no-repeat;
+            background-position: right 0.75rem center;
+            background-size: 16px 12px;
+        }
+        .dark-mode .nav-tabs-premium { border-bottom-color: #334155; }
+        .dark-mode .nav-tabs-premium .nav-link { color: #94a3b8; }
+        .dark-mode .nav-tabs-premium .nav-link.active, .dark-mode .nav-tabs-premium .nav-link:hover { color: var(--azure-blue); }
+        .dark-mode .quick-actions-bar { background-color: #1a2436; border-color: #334155; }
+        .dark-mode footer { background: #0f172a; border-top: 1px solid #334155; }
+        .dark-mode .toast { background-color: #1e293b; color: #e2e8f0; border: 1px solid #334155; }
+        .dark-mode .toast-header { background-color: #334155; color: #e2e8f0; border-bottom: 1px solid #475569; }
+        .dark-mode .btn-close { filter: invert(1) grayscale(100%) brightness(200%); }
+        .dark-mode .loading-overlay { background: linear-gradient(135deg, rgba(30, 64, 175, 0.95), rgba(55, 48, 163, 0.95)); }
+        .dark-mode .btn-outline-premium { border-color: #475569; color: #cbd5e1; }
+        .dark-mode .btn-outline-premium:hover { background-color: #334155; border-color: #475569; }
+        .dark-mode .main-stat-card .text-dark { color: #f1f5f9 !important; }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-premium sticky-top">
+        <div class="container-fluid">
+            <a class="navbar-brand d-flex align-items-center" href="#">
+                <i class="bi bi-cloud-azure me-2 fs-2"></i>
+                <span>Azure Price Intelligence</span>
+            </a>
+            <div class="d-flex align-items-center ms-auto">
+                <div id="live-status" class="me-3 d-none d-lg-flex align-items-center">
+                    <span class="live-dot me-2" title="Live Data Feed"></span>
+                    <span id="live-timestamp">Loading...</span>
+                </div>
+                <button class="btn btn-outline-premium" id="theme-toggle" title="Toggle theme">
+                    <i class="bi bi-moon"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container-fluid py-4 py-lg-5">
+        <div class="row">
+            <aside class="col-lg-3 col-md-4 mb-4">
+                <div class="glass-card mb-4">
+                    <div class="card-header"><h6 class="mb-0"><i class="bi bi-speedometer2 me-2"></i>Dashboard Overview</h6></div>
+                    <div class="card-body">
+                        <div class="stat-grid">
+                            <div class="stat-item"><div class="stat-value" id="total-vms">0</div><div class="stat-label">Total VMs</div></div>
+                            <div class="stat-item"><div class="stat-value" id="avg-price">$0.00</div><div class="stat-label">Avg Price</div></div>
+                            <div class="stat-item"><div class="stat-value" id="total-regions">0</div><div class="stat-label">Regions</div></div>
+                            <div class="stat-item"><div class="stat-value" id="total-families">0</div><div class="stat-label">Families</div></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-card">
+                    <div class="card-header"><h6 class="mb-0"><i class="bi bi-funnel me-2"></i>Smart Filters</h6></div>
+                    <div class="card-body">
+                        <div class="mb-3"><label class="form-label fw-bold small" for="search-input">Search</label><input type="text" class="form-control" id="search-input" placeholder="e.g., D4s_v5..." title="Search by VM name"></div>
+                        <div class="mb-3"><label class="form-label fw-bold small" for="region-filter">Region</label><select class="form-select" id="region-filter" title="Filter by Region"><option value="">All Regions</option></select></div>
+                        <div class="mb-3"><label class="form-label fw-bold small" for="os-filter">Operating System</label><select class="form-select" id="os-filter" title="Filter by Operating System"><option value="">All OS</option><option value="Windows">Windows</option><option value="Linux">Linux</option></select></div>
+                        <div class="mb-3"><label class="form-label fw-bold small" for="family-filter">VM Family</label><select class="form-select" id="family-filter" title="Filter by VM Family"><option value="">All Families</option></select></div>
+                        <div class="mb-3"><label class="form-label fw-bold small" for="spot-filter">Instance Type</label><select class="form-select" id="spot-filter" title="Filter by Instance Type"><option value="all">All</option><option value="regular">Regular Only</option><option value="spot">Spot Only</option></select></div>
+                        <div class="mb-3"><label class="form-label fw-bold small d-flex justify-content-between" for="price-range">Max Price/hr: <span id="price-range-value">$50</span></label><input type="range" class="form-range" id="price-range" min="0" max="100" value="50" step="1" title="Filter by Maximum Price"></div>
+                        <div class="mb-3"><label class="form-label fw-bold small" for="vcpu-filter">Min vCPUs: <span id="vcpu-value">0</span></label><input type="range" class="form-range" id="vcpu-filter" min="0" max="128" value="0" title="Filter by Minimum vCPUs"></div>
+                        <div class="mb-3"><label class="form-label fw-bold small" for="memory-filter">Min Memory (GB): <span id="memory-value">0</span></label><input type="range" class="form-range" id="memory-filter" min="0" max="1000" value="0" title="Filter by Minimum Memory"></div>
+                        <div class="d-grid gap-2"><button class="btn btn-primary-premium" id="apply-filters"><i class="bi bi-filter-circle me-1"></i>Apply</button><button class="btn btn-outline-premium" id="reset-filters"><i class="bi bi-arrow-clockwise me-1"></i>Reset</button></div>
+                    </div>
+                </div>
+            </aside>
+
+            <main class="col-lg-9 col-md-8">
+                 <div class="row mb-4">
+                    <div class="col mb-3"><div class="glass-card main-stat-card text-center h-100"><div class="card-body p-3"><i class="bi bi-currency-dollar fs-1 text-success mb-2"></i><h4 class="stat-value" id="cheapest-vm">$0.00</h4><p class="stat-label mb-0">Cheapest VM/hr</p></div></div></div>
+                    <div class="col mb-3"><div class="glass-card main-stat-card text-center h-100"><div class="card-body p-3"><i class="bi bi-graph-up fs-1 text-warning mb-2"></i><h4 class="stat-value" id="most-expensive">$0.00</h4><p class="stat-label mb-0">Most Expensive</p></div></div></div>
+                    <div class="col mb-3"><div class="glass-card main-stat-card text-center h-100"><div class="card-body p-3"><i class="bi bi-windows fs-1 text-primary mb-2"></i><h4 class="stat-value" id="windows-count">0</h4><p class="stat-label mb-0">Windows VMs</p></div></div></div>
+                    <div class="col mb-3"><div class="glass-card main-stat-card text-center h-100"><div class="card-body p-3"><i class="bi bi-ubuntu fs-1 text-dark mb-2"></i><h4 class="stat-value" id="linux-count">0</h4><p class="stat-label mb-0">Linux VMs</p></div></div></div>
+                    <div class="col mb-3"><div class="glass-card main-stat-card text-center h-100"><div class="card-body p-3"><i class="bi bi-lightning-charge fs-1 text-danger mb-2"></i><h4 class="stat-value" id="spot-count">0</h4><p class="stat-label mb-0">Spot Instances</p></div></div></div>
+                </div>
+
+                <div class="nav nav-tabs-premium mb-4" role="tablist">
+                    <button class="nav-link active" data-bs-toggle="tab" data-bs-target="#prices" type="button" role="tab"><i class="bi bi-table me-2"></i>Prices</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#calculator" type="button" role="tab"><i class="bi bi-calculator me-2"></i>Best-Fit</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#charts" type="button" role="tab"><i class="bi bi-bar-chart me-2"></i>Analytics</button>
+                    <button class="nav-link" data-bs-toggle="tab" data-bs-target="#cost" type="button" role="tab"><i class="bi bi-cash-coin me-2"></i>Estimator</button>
+                </div>
+
+                <div class="tab-content">
+                    <div class="tab-pane fade show active" id="prices" role="tabpanel">
+                        <div class="glass-card">
+                            <div class="card-header d-flex flex-wrap justify-content-between align-items-center"><h6 class="mb-2 mb-md-0"><i class="bi bi-table me-2"></i>Live Azure VM Pricing <span class="badge bg-primary ms-2" id="filtered-count">0 VMs</span></h6><div><select class="form-select form-select-sm" id="items-per-page" title="Select items per page" style="width: auto;"><option value="10">10 / page</option><option value="25" selected>25 / page</option><option value="50">50 / page</option><option value="100">100 / page</option></select></div></div>
+                            <div class="card-body">
+                                <div class="quick-actions-bar d-flex flex-wrap align-items-center gap-2 mb-4">
+                                    <h6 class="mb-0 me-2 small text-uppercase fw-bold text-muted">Quick Actions:</h6>
+                                    <button class="btn btn-sm btn-outline-premium quick-action" data-action="cheapest" title="Find cheapest VMs"><i class="bi bi-currency-dollar me-1"></i>Cheapest</button>
+                                    <button class="btn btn-sm btn-outline-premium quick-action" data-action="most-expensive" title="Find most expensive VMs"><i class="bi bi-graph-up-arrow me-1"></i>Most Expensive</button>
+                                    <button class="btn btn-sm btn-outline-premium quick-action" data-action="linux" title="Show only Linux VMs"><i class="bi bi-ubuntu me-1"></i>Linux Only</button>
+                                    <button class="btn btn-sm btn-outline-premium" id="export-btn" title="Export current view to CSV"><i class="bi bi-download me-1"></i>Export View</button>
+                                    <button class="btn btn-sm btn-outline-premium" id="quick-reset-btn" title="Reset all filters and sorting"><i class="bi bi-arrow-clockwise me-1"></i>Reset View</button>
+
+                                </div>
+                                <div class="table-responsive"><table class="table premium-table"><thead><tr><th data-sort="name">VM Name</th><th data-sort="family">Family</th><th data-sort="vcpus">vCPUs</th><th data-sort="memoryGB">Memory</th><th data-sort="os">OS</th><th data-sort="region">Region</th><th data-sort="pricePerHour">Price/hr</th><th data-sort="monthlyPrice">Monthly</th></tr></thead><tbody id="prices-table-body"></tbody></table></div>
+                                <div class="d-flex justify-content-between align-items-center mt-3"><div class="text-muted small" id="table-info">Showing 0 of 0 VMs</div><nav><ul class="pagination pagination-sm mb-0" id="pagination"></ul></nav></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="calculator" role="tabpanel">
+                        <div class="glass-card">
+                             <div class="card-header"><h6 class="mb-0"><i class="bi bi-magic me-2"></i>VM Recommendation Engine</h6></div>
+                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="calc-vcpus">Min vCPUs</label><input type="number" class="form-control" id="calc-vcpus" min="1" value="2" title="Enter minimum vCPUs"></div>
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="calc-memory">Min Memory (GB)</label><input type="number" class="form-control" id="calc-memory" min="1" value="8" title="Enter minimum memory in GB"></div>
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="calc-region">Region</label><select class="form-select" id="calc-region" title="Select preferred region"><option value="">Any Region</option></select></div>
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="calc-os">OS</label><select class="form-select" id="calc-os" title="Select operating system"><option value="">Any OS</option><option value="Windows">Windows</option><option value="Linux">Linux</option></select></div>
+                                        <div class="mb-3 form-check form-switch"><input class="form-check-input" type="checkbox" id="calc-include-spot" checked><label class="form-check-label" for="calc-include-spot">Include Spot Instances</label></div>
+                                        <div class="d-grid gap-2"><button class="btn btn-primary-premium" id="calculate-btn"><i class="bi bi-search me-1"></i>Find VMs</button><button class="btn btn-outline-premium" id="calc-reset"><i class="bi bi-arrow-clockwise me-1"></i>Reset</button></div>
+                                    </div>
+                                    <div class="col-lg-7 mt-4 mt-lg-0">
+                                        <div class="glass-card h-100">
+                                            <div class="card-header"><h6 class="mb-0"><i class="bi bi-stars me-2"></i>Top Recommendations <span class="badge bg-info ms-2" id="recommendation-count">0 Found</span></h6></div>
+                                            <div class="card-body p-2" id="calculator-results" style="max-height: 450px; overflow-y: auto;">
+                                                 <div class="text-center p-5 text-muted"><i class="bi bi-cpu fs-1 d-block mb-3"></i>Enter requirements to find the best value VMs.</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="charts" role="tabpanel">
+                         <div class="row">
+                            <div class="col-lg-6 mb-4"><div class="glass-card"><div class="card-body"><h6 class="mb-3 fw-bold"><i class="bi bi-bar-chart me-2"></i>Price Distribution</h6><canvas id="priceChart"></canvas></div></div></div>
+                            <div class="col-lg-6 mb-4"><div class="glass-card"><div class="card-body"><h6 class="mb-3 fw-bold"><i class="bi bi-pie-chart me-2"></i>VM Family Distribution</h6><canvas id="familyChart"></canvas></div></div></div>
+                            <div class="col-lg-6 mb-4"><div class="glass-card"><div class="card-body"><h6 class="mb-3 fw-bold"><i class="bi bi-globe-americas me-2"></i>Regional Price Comparison</h6><canvas id="regionChart"></canvas></div></div></div>
+                            <div class="col-lg-6 mb-4"><div class="glass-card"><div class="card-body"><h6 class="mb-3 fw-bold"><i class="bi bi-hdd-stack me-2"></i>OS Distribution</h6><canvas id="osChart"></canvas></div></div></div>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="cost" role="tabpanel">
+                        <div class="glass-card">
+                             <div class="card-header"><h6 class="mb-0"><i class="bi bi-currency-exchange me-2"></i>Cost Estimator</h6></div>
+                             <div class="card-body">
+                                <div class="row">
+                                    <div class="col-lg-5">
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="cost-vm-select">Select VM</label><select class="form-select" id="cost-vm-select" title="Select a VM to estimate costs"><option value="">Select a VM from the table...</option></select></div>
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="cost-hours">Hours per Month</label><input type="number" class="form-control" id="cost-hours" value="730" min="1" max="744" title="Enter hours per month"><div class="form-text small">730 hours ≈ 24/7 operation</div></div>
+                                        <div class="mb-3"><label class="form-label fw-bold small" for="cost-instances">Number of Instances</label><input type="number" class="form-control" id="cost-instances" value="1" min="1" title="Enter number of instances"></div>
+                                        <div class="d-grid gap-2 mt-3"><button class="btn btn-primary-premium" id="calculate-cost-btn"><i class="bi bi-calculator me-1"></i>Calculate Cost</button><button class="btn btn-outline-premium" id="cost-reset"><i class="bi bi-trash me-1"></i>Clear</button></div>
+                                    </div>
+                                    <div class="col-lg-7 mt-4 mt-lg-0">
+                                        <div class="glass-card h-100">
+                                             <div class="card-header"><h6 class="mb-0"><i class="bi bi-clipboard-data me-2"></i>Cost Analysis</h6></div>
+                                             <div class="card-body" id="cost-results">
+                                                 <div class="text-center p-5 text-muted"><i class="bi bi-graph-up-arrow fs-1 d-block mb-3"></i>Select a VM to see a detailed cost breakdown.</div>
+                                             </div>
+                                        </div>
+                                    </div>
+                                </div>
+                             </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </div>
+
+    <footer class="py-5 mt-4">
+        <div class="container text-center">
+            <h5 class="text-gradient mb-2">Azure Price Intelligence</h5>
+            <p class="text-muted small">© 2024 - Data provided by Azure Retail Prices API. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-content text-center">
+            <div class="spinner-border text-white" style="width: 3rem; height: 3rem;" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <h4 class="mt-3 text-white">Loading Azure VM Data</h4>
+            <p class="text-white-50">Fetching latest pricing information...</p>
+        </div>
+    </div>
+
+    <div class="toast-container position-fixed bottom-0 end-0 p-3">
+        <div id="liveToast" class="toast" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header"><i class="bi bi-info-circle text-primary me-2"></i><strong class="me-auto">Notification</strong><button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button></div>
+            <div class="toast-body" id="toast-message"></div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/luxon@3.4.4/build/global/luxon.min.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- GLOBAL STATE & CONSTANTS ---
+            const DATA_URL = './data/azure_prices.json';
+            let allVms = [];
+            let filteredVms = [];
+            let currentPage = 1;
+            let itemsPerPage = 25;
+            let sortState = { column: 'pricePerHour', direction: 'asc' };
+            const charts = {};
+
+            // --- DOM ELEMENTS ---
+            const loadingOverlay = document.getElementById('loading-overlay');
+            const toastElement = document.getElementById('liveToast');
+            const toast = new bootstrap.Toast(toastElement);
+
+            // --- UTILITY FUNCTIONS ---
+            const formatCurrency = (value) => value ? `$${value.toFixed(4)}` : '$0.00';
+            const showToast = (message) => {
+                document.getElementById('toast-message').textContent = message;
+                toast.show();
+            };
+            const debounce = (func, delay) => {
+                let timeout;
+                return (...args) => {
+                    clearTimeout(timeout);
+                    timeout = setTimeout(() => func.apply(this, args), delay);
+                };
+            };
+
+            // --- REUSABLE ACTIONS ---
+            function resetAllFilters() {
+                // Reset all the form inputs in the sidebar
+                document.getElementById('search-input').value = '';
+                document.getElementById('region-filter').value = '';
+                document.getElementById('os-filter').value = '';
+                document.getElementById('family-filter').value = '';
+                document.getElementById('spot-filter').value = 'all';
+                document.getElementById('price-range').value = document.getElementById('price-range').max;
+                document.getElementById('price-range-value').textContent = `$${document.getElementById('price-range').max}`;
+                document.getElementById('vcpu-filter').value = 0;
+                document.getElementById('vcpu-value').textContent = 0;
+                document.getElementById('memory-filter').value = 0;
+                document.getElementById('memory-value').textContent = 0;
+                
+                // Reset sorting to the default (cheapest first)
+                sortState = { column: 'pricePerHour', direction: 'asc' };
+                
+                // Apply the cleared filters to update the view
+                applyAllFilters();
+            }
+            
+            // --- DATA HANDLING & INITIALIZATION ---
+            async function loadData() {
+                loadingOverlay.style.display = 'flex';
+                try {
+                    const response = await fetch(DATA_URL);
+                    if (!response.ok) {
+                        throw new Error(`HTTP error! status: ${response.status}. Make sure you are running this from a local server and the data file is at '${DATA_URL}'.`);
+                    }
+                    const data = await response.json();
+                    
+                    // Pre-process data
+                    allVms = data.items.map(vm => ({
+                        ...vm,
+                        monthlyPrice: vm.pricePerHour ? vm.pricePerHour * 730 : 0
+                    })).filter(vm => vm.vcpus && vm.memoryGB); // Ensure core specs exist
+
+                    filteredVms = [...allVms];
+                    initializeApp(data.metadata, data.metadata.summary);
+                } catch (error) {
+                    console.error("Failed to load VM data:", error);
+                    showToast(`Error: ${error.message}`);
+                    document.getElementById('prices-table-body').innerHTML = `<tr><td colspan="8" class="text-center text-danger">Failed to load data. Please check the console for errors.</td></tr>`;
+                } finally {
+                    loadingOverlay.style.display = 'none';
+                }
+            }
+
+            function initializeApp(metadata, summary) {
+                // Populate filters
+                populateSelect('region-filter', summary.regions);
+                populateSelect('family-filter', summary.families);
+                populateSelect('calc-region', summary.regions);
+                populateSelect('cost-vm-select', allVms.map(vm => vm.name).filter((v, i, a) => a.indexOf(v) === i).sort());
+
+                // Set slider max values
+                const maxPrice = Math.ceil(summary.maxPricePerHour);
+                const maxVcpus = Math.max(...allVms.map(vm => vm.vcpus));
+                const maxMemory = Math.max(...allVms.map(vm => vm.memoryGB));
+                
+                document.getElementById('price-range').max = maxPrice;
+                document.getElementById('price-range').value = maxPrice;
+                document.getElementById('price-range-value').textContent = `$${maxPrice}`;
+                
+                document.getElementById('vcpu-filter').max = maxVcpus;
+                document.getElementById('memory-filter').max = maxMemory;
+
+                // Update summary cards with initial data
+                updateDashboardStats(allVms);
+                updateMainContentStats(allVms);
+                
+                // Initial render
+                applySorting();
+                renderTable();
+
+                // Setup Listeners
+                setupEventListeners();
+
+                // Initialize Analytics Charts
+                initializeCharts();
+
+                // Update timestamp with data generation time
+                const dataTimestamp = luxon.DateTime.fromISO(metadata.generatedAt).toFormat('LLL dd, yyyy, hh:mm:ss a');
+                 document.getElementById('live-timestamp').textContent = `Data as of ${dataTimestamp}`;
+            }
+
+            // --- UI RENDERING & UPDATES ---
+            function renderTable() {
+                const tableBody = document.getElementById('prices-table-body');
+                tableBody.innerHTML = '';
+
+                if (filteredVms.length === 0) {
+                    tableBody.innerHTML = `<tr><td colspan="8" class="text-center p-5 text-muted">No VMs match the current filters.</td></tr>`;
+                    updatePagination(0, 0);
+                    return;
+                }
+
+                const startIndex = (currentPage - 1) * itemsPerPage;
+                const endIndex = startIndex + itemsPerPage;
+                const pageItems = filteredVms.slice(startIndex, endIndex);
+
+                pageItems.forEach(vm => {
+                    const row = document.createElement('tr');
+                    const osBadge = vm.os === 'Windows' ? 'badge-windows' : 'badge-linux';
+                    const spotBadge = vm.isSpot ? `<span class="badge badge-spot ms-2">Spot</span>` : '';
+                    row.innerHTML = `
+                        <td><strong>${vm.name || 'N/A'}</strong></td>
+                        <td>${vm.family || 'N/A'}</td>
+                        <td>${vm.vcpus || 'N/A'}</td>
+                        <td>${vm.memoryGB || 'N/A'} GB</td>
+                        <td><span class="badge ${osBadge}">${vm.os}</span>${spotBadge}</td>
+                        <td>${vm.region || 'N/A'}</td>
+                        <td><strong>${formatCurrency(vm.pricePerHour)}</strong></td>
+                        <td>${formatCurrency(vm.monthlyPrice)}</td>
+                    `;
+                    tableBody.appendChild(row);
+                });
+                updatePagination(filteredVms.length, pageItems.length);
+            }
+
+            function updatePagination(totalFiltered, pageCount) {
+                const pagination = document.getElementById('pagination');
+                pagination.innerHTML = '';
+                const totalPages = Math.ceil(totalFiltered / itemsPerPage);
+
+                if (totalPages <= 1) {
+                     document.getElementById('table-info').textContent = `Showing ${totalFiltered} of ${allVms.length} VMs`;
+                     return;
+                }
+
+                // Previous button
+                const prev = document.createElement('li');
+                prev.className = `page-item ${currentPage === 1 ? 'disabled' : ''}`;
+                prev.innerHTML = `<a class="page-link" href="#" data-page="${currentPage - 1}">Previous</a>`;
+                pagination.appendChild(prev);
+
+                // Page numbers
+                for (let i = 1; i <= totalPages; i++) {
+                    const page = document.createElement('li');
+                    page.className = `page-item ${currentPage === i ? 'active' : ''}`;
+                    page.innerHTML = `<a class="page-link" href="#" data-page="${i}">${i}</a>`;
+                    pagination.appendChild(page);
+                }
+
+                // Next button
+                const next = document.createElement('li');
+                next.className = `page-item ${currentPage === totalPages ? 'disabled' : ''}`;
+                next.innerHTML = `<a class="page-link" href="#" data-page="${currentPage + 1}">Next</a>`;
+                pagination.appendChild(next);
+                
+                const start = (currentPage - 1) * itemsPerPage + 1;
+                const end = start + pageCount - 1;
+                document.getElementById('table-info').textContent = `Showing ${start}-${end} of ${totalFiltered} VMs`;
+            }
+
+            function updateDashboardStats(vms) {
+                const summary = {
+                    count: vms.length,
+                    regions: new Set(vms.map(v => v.region)).size,
+                    families: new Set(vms.map(v => v.family)).size,
+                    avgPrice: vms.length > 0 ? vms.reduce((acc, v) => acc + v.pricePerHour, 0) / vms.length : 0
+                };
+                document.getElementById('total-vms').textContent = summary.count.toLocaleString();
+                document.getElementById('total-regions').textContent = summary.regions;
+                document.getElementById('total-families').textContent = summary.families;
+                document.getElementById('avg-price').textContent = formatCurrency(summary.avgPrice);
+            }
+            
+            function updateMainContentStats(vms) {
+                document.getElementById('windows-count').textContent = vms.filter(v => v.os === 'Windows').length.toLocaleString();
+                document.getElementById('linux-count').textContent = vms.filter(v => v.os === 'Linux').length.toLocaleString();
+                document.getElementById('spot-count').textContent = vms.filter(v => v.isSpot).length.toLocaleString();
+                document.getElementById('filtered-count').textContent = `${vms.length} VMs`;
+
+                if (vms.length > 0) {
+                    const sortedByPrice = [...vms].sort((a, b) => a.pricePerHour - b.pricePerHour);
+                    document.getElementById('cheapest-vm').textContent = formatCurrency(sortedByPrice[0].pricePerHour);
+                    document.getElementById('most-expensive').textContent = formatCurrency(sortedByPrice[sortedByPrice.length - 1].pricePerHour);
+                } else {
+                    document.getElementById('cheapest-vm').textContent = '$0.00';
+                    document.getElementById('most-expensive').textContent = '$0.00';
+                }
+            }
+            
+            function populateSelect(elementId, options) {
+                const select = document.getElementById(elementId);
+                options.forEach(option => {
+                    const opt = document.createElement('option');
+                    opt.value = option;
+                    opt.textContent = option;
+                    select.appendChild(opt);
+                });
+            }
+
+            // --- FILTERING & SORTING LOGIC ---
+            function applyAllFilters() {
+                const filters = {
+                    search: document.getElementById('search-input').value.toLowerCase(),
+                    region: document.getElementById('region-filter').value,
+                    os: document.getElementById('os-filter').value,
+                    family: document.getElementById('family-filter').value,
+                    spot: document.getElementById('spot-filter').value,
+                    price: parseFloat(document.getElementById('price-range').value),
+                    vcpu: parseInt(document.getElementById('vcpu-filter').value),
+                    memory: parseInt(document.getElementById('memory-filter').value)
+                };
+
+                filteredVms = allVms.filter(vm => {
+                    const searchMatch = !filters.search || (vm.name && vm.name.toLowerCase().includes(filters.search));
+                    const regionMatch = !filters.region || vm.region === filters.region;
+                    const osMatch = !filters.os || vm.os === filters.os;
+                    const familyMatch = !filters.family || vm.family === filters.family;
+                    const priceMatch = vm.pricePerHour <= filters.price;
+                    const vcpuMatch = vm.vcpus >= filters.vcpu;
+                    const memoryMatch = vm.memoryGB >= filters.memory;
+
+                    let spotMatch = true;
+                    if (filters.spot === 'spot') spotMatch = vm.isSpot;
+                    if (filters.spot === 'regular') spotMatch = !vm.isSpot;
+
+                    return searchMatch && regionMatch && osMatch && familyMatch && priceMatch && vcpuMatch && memoryMatch && spotMatch;
+                });
+                
+                currentPage = 1;
+                applySorting(); // Re-apply sorting on the new filtered list
+                renderTable();
+                updateMainContentStats(filteredVms);
+            }
+            
+            function applySorting() {
+                filteredVms.sort((a, b) => {
+                    const valA = a[sortState.column];
+                    const valB = b[sortState.column];
+
+                    if (valA === null || valA === undefined) return 1;
+                    if (valB === null || valB === undefined) return -1;
+                    
+                    let comparison = 0;
+                    if (typeof valA === 'number' && typeof valB === 'number') {
+                        comparison = valA - valB;
+                    } else {
+                        comparison = String(valA).localeCompare(String(valB));
+                    }
+                    
+                    return sortState.direction === 'asc' ? comparison : -comparison;
+                });
+            }
+
+            // --- EVENT LISTENERS SETUP ---
+            function setupEventListeners() {
+                document.getElementById('apply-filters').addEventListener('click', applyAllFilters);
+                document.getElementById('reset-filters').addEventListener('click', resetAllFilters);
+                document.getElementById('quick-reset-btn').addEventListener('click', resetAllFilters);
+
+                document.getElementById('search-input').addEventListener('input', debounce(applyAllFilters, 300));
+                
+                // Range sliders value display
+                // Range sliders value display
+                ['price-range', 'vcpu-filter', 'memory-filter'].forEach(id => {
+                    document.getElementById(id).addEventListener('input', (e) => {
+                        const valueElId = id.includes('filter') ? id.replace('filter', 'value') : 'price-range-value';
+                        const valueEl = document.getElementById(valueElId);
+                        valueEl.textContent = id === 'price-range' ? `$${e.target.value}` : e.target.value;
+                    });
+                });
+
+                // Pagination
+                document.getElementById('pagination').addEventListener('click', (e) => {
+                    e.preventDefault();
+                    if (e.target.tagName === 'A') {
+                        const page = parseInt(e.target.dataset.page);
+                        if (page && page !== currentPage) {
+                            currentPage = page;
+                            renderTable();
+                        }
+                    }
+                });
+
+                document.getElementById('items-per-page').addEventListener('change', (e) => {
+                    itemsPerPage = parseInt(e.target.value);
+                    currentPage = 1;
+                    renderTable();
+                });
+                
+                // Table Sorting
+                document.querySelectorAll('.premium-table th[data-sort]').forEach(th => {
+                    th.addEventListener('click', () => {
+                        const column = th.dataset.sort;
+                        if (sortState.column === column) {
+                            sortState.direction = sortState.direction === 'asc' ? 'desc' : 'asc';
+                        } else {
+                            sortState.column = column;
+                            sortState.direction = 'asc';
+                        }
+                        applySorting();
+                        renderTable();
+                    });
+                });
+
+                // Quick Actions
+                document.querySelectorAll('.quick-action').forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        const action = e.currentTarget.dataset.action;
+                        if (action === 'cheapest') {
+                            sortState = { column: 'pricePerHour', direction: 'asc' };
+                            applySorting();
+                            renderTable();
+                        }
+                        if (action === 'most-expensive') {
+                            sortState = { column: 'pricePerHour', direction: 'desc' };
+                            applySorting();
+                            renderTable();
+                        }
+                        if (action === 'linux') {
+                            document.getElementById('os-filter').value = 'Linux';
+                            applyAllFilters();
+                        }
+                         if (action === 'spot') {
+                            document.getElementById('spot-filter').value = 'spot';
+                            applyAllFilters();
+                        }
+                    });
+                });
+
+                // Export
+                document.getElementById('export-btn').addEventListener('click', exportToCsv);
+
+                // Calculator
+                document.getElementById('calculate-btn').addEventListener('click', handleCalculator);
+                document.getElementById('calc-reset').addEventListener('click', () => {
+                    document.getElementById('calc-vcpus').value = 2;
+                    document.getElementById('calc-memory').value = 8;
+                    document.getElementById('calc-region').value = '';
+                    document.getElementById('calc-os').value = '';
+                    document.getElementById('calc-include-spot').checked = true;
+                    document.getElementById('calculator-results').innerHTML = `<div class="text-center p-5 text-muted"><i class="bi bi-cpu fs-1 d-block mb-3"></i>Enter requirements to find the best value VMs.</div>`;
+                    document.getElementById('recommendation-count').textContent = '0 Found';
+                });
+                
+                // Cost Estimator
+                document.getElementById('calculate-cost-btn').addEventListener('click', handleCostEstimator);
+                document.getElementById('cost-reset').addEventListener('click', () => {
+                      document.getElementById('cost-vm-select').value = '';
+                      document.getElementById('cost-hours').value = 730;
+                      document.getElementById('cost-instances').value = 1;
+                      document.getElementById('cost-results').innerHTML = `<div class="text-center p-5 text-muted"><i class="bi bi-graph-up-arrow fs-1 d-block mb-3"></i>Select a VM to see a detailed cost breakdown.</div>`;
+                });
+            }
+            
+            // --- TAB-SPECIFIC LOGIC ---
+            function handleCalculator() {
+                const reqs = {
+                    vcpus: parseInt(document.getElementById('calc-vcpus').value),
+                    memory: parseInt(document.getElementById('calc-memory').value),
+                    region: document.getElementById('calc-region').value,
+                    os: document.getElementById('calc-os').value,
+                    spot: document.getElementById('calc-include-spot').checked
+                };
+                
+                const results = allVms.filter(vm => 
+                    vm.vcpus >= reqs.vcpus &&
+                    vm.memoryGB >= reqs.memory &&
+                    (!reqs.region || vm.region === reqs.region) &&
+                    (!reqs.os || vm.os === reqs.os) &&
+                    (reqs.spot || !vm.isSpot)
+                ).sort((a,b) => a.pricePerHour - b.pricePerHour).slice(0, 10);
+                
+                const resultsContainer = document.getElementById('calculator-results');
+                resultsContainer.innerHTML = '';
+                document.getElementById('recommendation-count').textContent = `${results.length} Found`;
+
+                if(results.length > 0) {
+                    results.forEach(vm => {
+                        const osBadge = vm.os === 'Windows' ? 'badge-windows' : 'badge-linux';
+                        const spotBadge = vm.isSpot ? `<span class="badge badge-spot ms-2">Spot</span>` : '';
+                        const resultCard = document.createElement('div');
+                        resultCard.className = 'd-flex justify-content-between align-items-center p-3 border-bottom';
+                        resultCard.innerHTML = `
+                            <div>
+                                <strong>${vm.name}</strong>
+                                <div class="small text-muted">${vm.vcpus} vCPUs, ${vm.memoryGB} GB, ${vm.region}</div>
+                                <span class="badge ${osBadge}">${vm.os}</span>${spotBadge}
+                            </div>
+                            <div class="text-end">
+                                <strong class="text-success">${formatCurrency(vm.pricePerHour)}/hr</strong>
+                                <div class="small text-muted">${formatCurrency(vm.monthlyPrice)}/mo</div>
+                            </div>
+                        `;
+                        resultsContainer.appendChild(resultCard);
+                    });
+                } else {
+                    resultsContainer.innerHTML = `<div class="text-center p-5 text-muted">No VMs found matching your criteria. Try relaxing your requirements.</div>`;
+                }
+            }
+            
+            function handleCostEstimator() {
+                const vmName = document.getElementById('cost-vm-select').value;
+                const hours = parseInt(document.getElementById('cost-hours').value);
+                const instances = parseInt(document.getElementById('cost-instances').value);
+                const resultsContainer = document.getElementById('cost-results');
+
+                if (!vmName || !hours || !instances) {
+                    showToast("Please select a VM and enter valid numbers for hours and instances.");
+                    return;
+                }
+                
+                // Find the cheapest instance of the selected VM name
+                const vm = allVms.filter(v => v.name === vmName).sort((a, b) => a.pricePerHour - b.pricePerHour)[0];
+
+                if (!vm) {
+                       resultsContainer.innerHTML = `<div class="text-center p-5 text-danger">Could not find data for the selected VM.</div>`;
+                       return;
+                }
+                
+                const costPerHour = vm.pricePerHour * instances;
+                const costPerDay = costPerHour * 24;
+                const costPerMonth = costPerHour * hours;
+                const costPerYear = costPerMonth * 12;
+
+                resultsContainer.innerHTML = `
+                    <h5 class="mb-3">Estimate for: <strong>${instances}x ${vm.name}</strong></h5>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Instance Price (per hour)<span>${formatCurrency(vm.pricePerHour)}</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center bg-light"><strong>Total Hourly Cost</strong><strong class="text-primary fs-5">${formatCurrency(costPerHour)}</strong></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Total Daily Cost (~24hrs)<span>${formatCurrency(costPerDay)}</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Total Monthly Cost (${hours}hrs)<span>${formatCurrency(costPerMonth)}</span></li>
+                        <li class="list-group-item d-flex justify-content-between align-items-center">Total Annual Cost<span>${formatCurrency(costPerYear)}</span></li>
+                    </ul>
+                    <div class="form-text small mt-3">Based on the cheapest available region for this VM: ${vm.region}.</div>
+                `;
+            }
+
+            function exportToCsv() {
+                const headers = ['VM Name', 'Family', 'vCPUs', 'Memory (GB)', 'OS', 'Region', 'Price/hr', 'Monthly Price', 'Is Spot'];
+                const rows = filteredVms.map(vm => [
+                    vm.name, vm.family, vm.vcpus, vm.memoryGB, vm.os, vm.region, vm.pricePerHour, vm.monthlyPrice, vm.isSpot
+                ]);
+
+                let csvContent = "data:text/csv;charset=utf-8," 
+                    + headers.join(",") + "\n" 
+                    + rows.map(e => e.join(",")).join("\n");
+                
+                const encodedUri = encodeURI(csvContent);
+                const link = document.createElement("a");
+                link.setAttribute("href", encodedUri);
+                link.setAttribute("download", "azure_vm_prices.csv");
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                showToast("Data exported successfully!");
+            }
+            
+            // --- CHARTS INITIALIZATION ---
+            function initializeCharts() {
+                const isDarkMode = () => document.body.classList.contains('dark-mode');
+                const gridColor = () => isDarkMode() ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)';
+                const textColor = () => isDarkMode() ? '#cbd5e1' : '#344054';
+
+                // Price Distribution Chart
+                const priceBins = [0, 0.1, 0.2, 0.5, 1, 2, 5, 10];
+                const priceLabels = ['<$0.1', '$0.1-0.2', '$0.2-0.5', '$0.5-1', '$1-2', '$2-5', '$5-10', '>$10'];
+                const priceData = priceLabels.map(() => 0);
+                allVms.forEach(vm => {
+                    const price = vm.pricePerHour;
+                    let binIndex = priceBins.findIndex(bin => price < bin);
+                    if (binIndex === -1) binIndex = priceBins.length;
+                    priceData[binIndex]++;
+                });
+                charts.price = new Chart(document.getElementById('priceChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: priceLabels,
+                        datasets: [{ label: 'Number of VMs', data: priceData, backgroundColor: 'rgba(0, 120, 212, 0.7)' }]
+                    },
+                    options: { scales: { x: { ticks: { color: textColor() } }, y: { beginAtZero: true, grid: { color: gridColor() }, ticks: { color: textColor() } } } }
+                });
+
+                // Family Distribution Chart
+                const familyCounts = allVms.reduce((acc, vm) => {
+                    acc[vm.family] = (acc[vm.family] || 0) + 1;
+                    return acc;
+                }, {});
+                const sortedFamilies = Object.entries(familyCounts).sort((a,b) => b[1] - a[1]).slice(0, 10);
+                charts.family = new Chart(document.getElementById('familyChart'), {
+                    type: 'doughnut',
+                    data: {
+                        labels: sortedFamilies.map(f => f[0]),
+                        datasets: [{ data: sortedFamilies.map(f => f[1]) }]
+                    },
+                     options: { plugins: { legend: { labels: { color: textColor() } } } }
+                });
+                
+                // Regional Price Comparison
+                const regionPrices = allVms.reduce((acc, vm) => {
+                    if (!acc[vm.region]) acc[vm.region] = { sum: 0, count: 0 };
+                    acc[vm.region].sum += vm.pricePerHour;
+                    acc[vm.region].count++;
+                    return acc;
+                }, {});
+                const avgRegionPrices = Object.entries(regionPrices).map(([region, data]) => ({ region, avg: data.sum/data.count }));
+                const sortedRegions = avgRegionPrices.sort((a,b) => b.avg - a.avg).slice(0, 10);
+                charts.region = new Chart(document.getElementById('regionChart'), {
+                    type: 'bar',
+                    data: {
+                        labels: sortedRegions.map(r => r.region),
+                        datasets: [{ label: 'Average Price/hr', data: sortedRegions.map(r => r.avg), backgroundColor: 'rgba(0, 133, 117, 0.7)' }]
+                    },
+                     options: { scales: { x: { ticks: { color: textColor() } }, y: { beginAtZero: true, grid: { color: gridColor() }, ticks: { color: textColor() } } } }
+                });
+
+                // OS Distribution
+                const osCounts = allVms.reduce((acc, vm) => {
+                    acc[vm.os] = (acc[vm.os] || 0) + 1;
+                    return acc;
+                }, {});
+                charts.os = new Chart(document.getElementById('osChart'), {
+                    type: 'pie',
+                    data: {
+                        labels: Object.keys(osCounts),
+                        datasets: [{ data: Object.values(osCounts) }]
+                    },
+                    options: { plugins: { legend: { labels: { color: textColor() } } } }
+                });
+
+                // Theme change listener to update chart colors
+                document.getElementById('theme-toggle').addEventListener('click', () => {
+                   setTimeout(() => { // delay to allow body class to update
+                     Object.values(charts).forEach(chart => {
+                         chart.options.scales.x.ticks.color = textColor();
+                         chart.options.scales.y.ticks.color = textColor();
+                         chart.options.scales.y.grid.color = gridColor();
+                         chart.options.plugins.legend.labels.color = textColor();
+                         chart.update();
+                      });
+                   }, 100);
+                });
+            }
+
+            // --- UI INITIALIZATION SCRIPT (Theme, Timestamp) ---
+            const themeToggle = document.getElementById('theme-toggle');
+            const themeIcon = themeToggle.querySelector('i');
+            const applyTheme = (theme) => {
+                document.body.classList.toggle('dark-mode', theme === 'dark');
+                themeIcon.classList.toggle('bi-moon', theme === 'light');
+                themeIcon.classList.toggle('bi-sun', theme === 'dark');
+            };
+            const savedTheme = localStorage.getItem('theme') || 'light';
+            applyTheme(savedTheme);
+            themeToggle.addEventListener('click', () => {
+                const newTheme = document.body.classList.contains('dark-mode') ? 'light' : 'dark';
+                localStorage.setItem('theme', newTheme);
+                applyTheme(newTheme);
+            });
+            
+            // Start the application
+            loadData();
+        });
+    </script>
+</body>
+</html>

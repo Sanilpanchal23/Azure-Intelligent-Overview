@@ -12,6 +12,7 @@ import re
 import sys
 import time
 import random
+import os  # Added for reliable path handling
 from datetime import datetime, timezone
 from typing import Dict, List, Any, Optional
 import requests
@@ -26,12 +27,12 @@ except ImportError:
 
 # Constants
 AZURE_API_URL = "https://prices.azure.com/api/retail/prices"
-DEFAULT_OUTPUT = "../dashboard/data/azure_prices.json"
+DEFAULT_OUTPUT_RELATIVE = "../dashboard/data/azure_prices.json"
 USER_AGENT = "Azure-Price-Intelligence-Dashboard/1.0"
 
 # Regex patterns
 VCPU_PATTERN = re.compile(r'(\d+)\s*vCPU', re.IGNORECASE)
-RAM_PATTERN = re.compile(r'(\d+)\s*GB', re.IGNORECASE)
+RAM_PATTERN = re.compile(r'(\d+(?:\.\d+)?)\s*GB', re.IGNORECASE)
 SERIES_PATTERN = re.compile(r'([A-Za-z]+)\d*[a-z]*\s*v?(\d+)', re.IGNORECASE)
 
 class AzurePriceScanner:
@@ -50,36 +51,24 @@ class AzurePriceScanner:
     
     def is_consumption_pricing(self, item: Dict[str, Any]) -> bool:
         """
-        Smart consumption detection since Azure API is unreliable:
-        - Must be hourly pricing (unitOfMeasure contains 'Hour')
-        - Must NOT be reservation, SQL, database, storage, etc.
-        - Must have reasonable price (< $1000/hr sanity check)
+        Smart consumption detection since Azure API is unreliable.
         """
         unit = (item.get("unitOfMeasure") or "").lower()
-        meter_name = (item.get("meterName") or "").lower()
-        product_name = (item.get("productName") or "").lower()
-        sku_name = (item.get("skuName") or "").lower()
-        
-        # Must be hourly pricing
         if "hour" not in unit:
             return False
         
-        # Exclude non-VM items
         exclusion_terms = [
             "reservation", "sql", "database", "storage", "bandwidth", 
             "snapshot", "backup", "oracle", "premium ssd", "managed disk"
         ]
         
-        combined_text = f"{meter_name} {product_name} {sku_name}".lower()
-        for term in exclusion_terms:
-            if term in combined_text:
-                return False
+        combined_text = f"{item.get('meterName', '')} {item.get('productName', '')} {item.get('skuName', '')}".lower()
+        if any(term in combined_text for term in exclusion_terms):
+            return False
         
-        # Price sanity check
-        price = item.get("retailPrice") or item.get("unitPrice") or 0
         try:
-            price_float = float(price)
-            if price_float > 1000:  # No VM should cost > $1000/hr
+            price = float(item.get("retailPrice") or item.get("unitPrice") or 0)
+            if price > 1000:
                 return False
         except (ValueError, TypeError):
             pass
@@ -87,38 +76,30 @@ class AzurePriceScanner:
         return True
     
     def parse_vm_specs(self, product_name: str, sku_name: str, vm_name: str) -> Dict[str, Any]:
-        """
-        Enhanced VM specs parsing using lookup table when available
-        """
+        """Enhanced VM specs parsing using lookup table when available"""
         specs = {"vcpus": None, "memoryGB": None}
         
-        # First try the lookup table if available
         if VM_SPECS_AVAILABLE:
             lookup_specs = get_vm_specs(vm_name)
-            if lookup_specs["vcpus"] is not None:
-                specs["vcpus"] = lookup_specs["vcpus"]
-            if lookup_specs["memoryGB"] is not None:
-                specs["memoryGB"] = lookup_specs["memoryGB"]
-        
-        # If lookup didn't find everything, try regex parsing as fallback
-        if not specs["vcpus"] or not specs["memoryGB"]:
+            if lookup_specs:
+                specs.update(lookup_specs)
+
+        if not specs.get("vcpus") or not specs.get("memoryGB"):
             search_text = f"{product_name or ''} {sku_name or ''}".lower()
             
-            if not specs["vcpus"]:
+            if not specs.get("vcpus"):
                 vcpu_match = VCPU_PATTERN.search(search_text)
                 if vcpu_match:
                     try:
                         specs["vcpus"] = int(vcpu_match.group(1))
-                    except (ValueError, TypeError):
-                        pass
+                    except (ValueError, TypeError): pass
             
-            if not specs["memoryGB"]:
+            if not specs.get("memoryGB"):
                 ram_match = RAM_PATTERN.search(search_text)
                 if ram_match:
                     try:
-                        specs["memoryGB"] = int(ram_match.group(1))
-                    except (ValueError, TypeError):
-                        pass
+                        specs["memoryGB"] = float(ram_match.group(1))
+                    except (ValueError, TypeError): pass
         
         return specs
     
@@ -126,44 +107,39 @@ class AzurePriceScanner:
         combined_text = f"{product_name or ''} {sku_name or ''}".lower()
         if "windows" in combined_text:
             return "Windows"
-        elif "linux" in combined_text:
-            return "Linux"
         
-        # Additional detection for common Linux patterns
-        linux_indicators = ["ubuntu", "red hat", "rhel", "suse", "debian", "centos"]
-        for indicator in linux_indicators:
-            if indicator in combined_text:
-                return "Linux"
-                
+        linux_indicators = ["linux", "ubuntu", "red hat", "rhel", "suse", "debian", "centos"]
+        if any(indicator in combined_text for indicator in linux_indicators):
+            return "Linux"
+            
         return "Unknown"
     
     def is_spot_instance(self, sku_name: str, product_name: str) -> bool:
         combined_text = f"{sku_name or ''} {product_name or ''}".lower()
-        spot_indicators = ["spot", "low priority", "low-priority"]
-        return any(indicator in combined_text for indicator in spot_indicators)
+        return any(indicator in combined_text for indicator in ["spot", "low priority"])
     
     def extract_series_info(self, sku_name: str, arm_sku_name: str) -> Dict[str, Optional[str]]:
         source_text = arm_sku_name or sku_name or ""
         series_match = SERIES_PATTERN.search(source_text)
         if series_match:
-            family = series_match.group(1)
+            family = series_match.group(1).upper()
             generation = series_match.group(2)
             series = f"{family}v{generation}"
         else:
             family_match = re.match(r'([A-Za-z]+)', source_text.replace("Standard_", ""))
-            family = family_match.group(1) if family_match else None
+            family = family_match.group(1).upper() if family_match else None
             series = family
         
-        return {"series": series, "family": family, "size": sku_name or arm_sku_name}
+        return {"series": series, "family": family, "size": arm_sku_name or sku_name}
     
     def fetch_vm_prices(self, os_filter: str = "both", include_spot: bool = False, 
-                       regions: Optional[List[str]] = None, max_pages: int = 0, 
-                       timeout: int = 30) -> List[Dict[str, Any]]:
+                        regions: Optional[List[str]] = None, max_pages: int = 0, 
+                        timeout: int = 30) -> List[Dict[str, Any]]:
         all_items = []
         next_url = None
         page_count = 0
         
-        # Generate random page limit between 75-250 if max_pages is 0
+        # RESTORED: Generate random page limit if max_pages is 0
         if max_pages == 0:
             max_pages = random.randint(10, 100)
             print(f"Random page limit set to: {max_pages} pages")
@@ -173,22 +149,18 @@ class AzurePriceScanner:
         
         print(f"Starting data collection with filter: {query_filter}")
         print(f"Page limit: {max_pages} pages")
-        if VM_SPECS_AVAILABLE:
-            print("Using enhanced VM specs lookup table")
-        else:
-            print("Using basic VM specs parsing (vm_specs_lookup.py not found)")
         
         while True:
             page_count += 1
-            if max_pages > 0 and page_count > max_pages:
+            if page_count > max_pages:
                 print(f"Reached maximum page limit ({max_pages})")
                 break
             
-            url = next_url if next_url else AZURE_API_URL
-            params = {} if next_url else params
+            url = next_url or AZURE_API_URL
+            current_params = {} if next_url else params
             
             try:
-                response = self.session.get(url, params=params, timeout=timeout)
+                response = self.session.get(url, params=current_params, timeout=timeout)
                 response.raise_for_status()
                 data = response.json()
                 
@@ -203,43 +175,32 @@ class AzurePriceScanner:
                 
                 next_url = data.get("NextPageLink")
                 if not next_url:
-                    print("No more pages available")
+                    print("No more pages available.")
                     break
                 
-                time.sleep(0.3)  # Respectful delay
+                time.sleep(0.3)
                 
             except requests.exceptions.RequestException as e:
-                print(f"Error fetching page {page_count}: {e}")
+                print(f"Error fetching page {page_count}: {e}", file=sys.stderr)
                 break
             except json.JSONDecodeError as e:
-                print(f"Error parsing JSON response: {e}")
+                print(f"Error parsing JSON on page {page_count}: {e}", file=sys.stderr)
                 break
         
         print(f"Data collection complete. Total items: {len(all_items)}")
         return all_items
     
     def _should_include_item(self, item: Dict[str, Any], include_spot: bool, 
-                           regions: Optional[List[str]]) -> bool:
-        # Check if it's a VM
-        if item.get("serviceName") != "Virtual Machines":
+                             regions: Optional[List[str]]) -> bool:
+        if item.get("serviceName") != "Virtual Machines" or not self.is_consumption_pricing(item):
             return False
         
-        # Use our smart consumption detection
-        if not self.is_consumption_pricing(item):
+        if not include_spot and self.is_spot_instance(item.get("skuName", ""), item.get("productName", "")):
             return False
         
-        # Check spot instances
-        sku_name = item.get("skuName", "")
-        product_name = item.get("productName", "")
-        if not include_spot and self.is_spot_instance(sku_name, product_name):
-            return False
-        
-        # Check region filter
         if regions:
             item_region = item.get("armRegionName") or item.get("location", "")
-            if not item_region:
-                return False
-            if item_region.lower() not in [r.lower() for r in regions]:
+            if not item_region or item_region.lower() not in [r.lower() for r in regions]:
                 return False
         
         return True
@@ -253,77 +214,30 @@ class AzurePriceScanner:
             series_info = self.extract_series_info(sku_name, arm_sku_name)
             vm_name = series_info["size"] or sku_name or arm_sku_name
             
-            # Use enhanced parsing with VM name
             specs = self.parse_vm_specs(product_name, sku_name, vm_name)
             os_type = self.determine_os_type(product_name, sku_name)
             is_spot = self.is_spot_instance(sku_name, product_name)
             
-            price = item.get("retailPrice") or item.get("unitPrice") or 0.0
-            try:
-                price = float(price)
-            except (ValueError, TypeError):
-                price = 0.0
+            price = float(item.get("retailPrice") or item.get("unitPrice") or 0.0)
+            if price > 1000: return None
             
-            # Final price sanity check
-            if price > 1000:  # Skip extremely high prices
-                return None
-            
-            processed = {
-                "name": vm_name,
-                "skuName": sku_name,
-                "productName": product_name,
-                "armSkuName": arm_sku_name,
-                "series": series_info["series"],
-                "family": series_info["family"],
-                "size": series_info["size"],
-                "os": os_type,
-                "isSpot": is_spot,
-                "vcpus": specs["vcpus"],
-                "memoryGB": specs["memoryGB"],
-                "pricePerHour": price,
-                "currencyCode": item.get("currencyCode", "USD"),
-                "unitOfMeasure": item.get("unitOfMeasure", "1 Hour"),
-                "region": item.get("armRegionName") or item.get("location", ""),
-                "meterId": item.get("meterId"),
-                "skuId": item.get("skuId"),
-                "productId": item.get("productId"),
-                "effectiveStartDate": item.get("effectiveStartDate"),
-                "offerTermCode": item.get("offerTermCode"),
-                "serviceFamily": item.get("serviceFamily"),
-                "meterName": item.get("meterName"),
-                "priceType": item.get("priceType"),
+            return {
+                "name": vm_name, "family": series_info["family"], "os": os_type,
+                "isSpot": is_spot, "vcpus": specs.get("vcpus"), "memoryGB": specs.get("memoryGB"),
+                "pricePerHour": price, "region": item.get("armRegionName") or item.get("location", ""),
+                # You can add other fields from the 'item' dictionary here if needed
             }
-            
-            return processed
-            
         except Exception as e:
-            print(f"Error processing item: {e}")
+            print(f"Warning: Could not process item {item.get('skuId')}. Reason: {e}", file=sys.stderr)
             return None
     
     def generate_summary(self, items: List[Dict[str, Any]]) -> Dict[str, Any]:
-        if not items:
-            return {
-                "count": 0,
-                "regionsCount": 0,
-                "regions": [],
-                "familiesCount": 0,
-                "families": [],
-                "osTypes": [],
-                "spotCount": 0,
-                "avgPricePerHour": 0.0,
-                "minPricePerHour": 0.0,
-                "maxPricePerHour": 0.0,
-            }
+        if not items: return {}
         
-        prices = [item.get("pricePerHour", 0) for item in items if item.get("pricePerHour") is not None]
-        regions = sorted(set(item.get("region", "") for item in items if item.get("region")))
-        families = sorted(set(item.get("family", "") for item in items if item.get("family")))
-        os_types = sorted(set(item.get("os", "") for item in items if item.get("os")))
-        
-        avg_price = sum(prices) / len(prices) if prices else 0
-        min_price = min(prices) if prices else 0
-        max_price = max(prices) if prices else 0
-        spot_count = sum(1 for item in items if item.get("isSpot"))
+        prices = [item["pricePerHour"] for item in items if "pricePerHour" in item]
+        regions = sorted(list(set(item["region"] for item in items if item.get("region"))))
+        families = sorted(list(set(item["family"] for item in items if item.get("family"))))
+        os_types = sorted(list(set(item["os"] for item in items if item.get("os"))))
         
         return {
             "count": len(items),
@@ -332,10 +246,10 @@ class AzurePriceScanner:
             "familiesCount": len(families),
             "families": families,
             "osTypes": os_types,
-            "spotCount": spot_count,
-            "avgPricePerHour": round(avg_price, 6),
-            "minPricePerHour": round(min_price, 6),
-            "maxPricePerHour": round(max_price, 6),
+            "spotCount": sum(1 for item in items if item.get("isSpot")),
+            "avgPricePerHour": round(sum(prices) / len(prices), 6) if prices else 0,
+            "minPricePerHour": round(min(prices), 6) if prices else 0,
+            "maxPricePerHour": round(max(prices), 6) if prices else 0,
         }
     
     def save_to_json(self, items: List[Dict[str, Any]], filename: str) -> None:
@@ -348,6 +262,11 @@ class AzurePriceScanner:
         
         output = {"metadata": metadata, "items": items}
         
+        # FIXED: Ensure the output directory exists before writing the file
+        output_dir = os.path.dirname(filename)
+        if output_dir:
+            os.makedirs(output_dir, exist_ok=True)
+        
         with open(filename, 'w', encoding='utf-8') as f:
             json.dump(output, f, indent=2, ensure_ascii=False)
         
@@ -355,16 +274,24 @@ class AzurePriceScanner:
 
 def main():
     parser = argparse.ArgumentParser(description="Azure VM Price Scanner - OPTIMIZED")
-    parser.add_argument("--out", default=DEFAULT_OUTPUT, help="Output JSON file")
+    parser.add_argument("--out", default=DEFAULT_OUTPUT_RELATIVE, help="Output JSON file path")
     parser.add_argument("--os", choices=["linux", "windows", "both"], default="both", help="OS filter")
     parser.add_argument("--include-spot", action="store_true", help="Include Spot instances")
     parser.add_argument("--regions", type=str, default="", help="Comma-separated list of regions")
-    parser.add_argument("--max-pages", type=int, default=0, help="Maximum pages to fetch (0 = random 75-250)")
+    parser.add_argument("--max-pages", type=int, default=0, help="Maximum pages to fetch (0 = random 10-100)")
     parser.add_argument("--timeout", type=int, default=30, help="HTTP timeout in seconds")
     
     args = parser.parse_args()
     
-    regions_list = [r.strip() for r in args.regions.split(",") if r.strip()] if args.regions else None
+    regions_list = [r.strip().lower() for r in args.regions.split(",") if r.strip()] if args.regions else None
+    
+    # FIXED: Build a reliable, absolute path for the output file
+    if args.out == DEFAULT_OUTPUT_RELATIVE:
+        script_dir = os.path.dirname(__file__)
+        output_file_path = os.path.join(script_dir, args.out)
+        output_file_path = os.path.normpath(output_file_path)
+    else:
+        output_file_path = args.out
     
     scanner = AzurePriceScanner()
     
@@ -380,26 +307,20 @@ def main():
             timeout=args.timeout
         )
         
-        scanner.save_to_json(items, args.out)
-        
-        duration = time.time() - start_time
-        summary = scanner.generate_summary(items)
-        
-        print("\n=== COLLECTION SUMMARY ===")
-        print(f"Total VMs: {summary['count']}")
-        if summary['count'] > 0:
-            print(f"Regions: {summary['regionsCount']}")
-            print(f"Families: {summary['familiesCount']}")
-            print(f"Spot Instances: {summary['spotCount']}")
-            print(f"Avg Price: ${summary['avgPricePerHour']:.6f}/hr")
-            print(f"Price Range: ${summary['minPricePerHour']:.6f} - ${summary['maxPricePerHour']:.6f}/hr")
-        print(f"Duration: {duration:.2f} seconds")
+        if items:
+            scanner.save_to_json(items, output_file_path)
+            summary = scanner.generate_summary(items)
+            print("\n=== COLLECTION SUMMARY ===")
+            print(f"Total VMs Processed: {summary.get('count', 0)}")
+            print(f"Duration: {time.time() - start_time:.2f} seconds")
+        else:
+            print("No items were collected.")
         
     except KeyboardInterrupt:
-        print("\nScan interrupted by user")
+        print("\nScan interrupted by user.", file=sys.stderr)
         sys.exit(1)
     except Exception as e:
-        print(f"Error: {e}")
+        print(f"\nAn unexpected error occurred: {e}", file=sys.stderr)
         import traceback
         traceback.print_exc()
         sys.exit(1)

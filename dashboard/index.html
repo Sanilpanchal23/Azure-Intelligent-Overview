@@ -270,8 +270,9 @@
                                     <button class="btn btn-sm btn-outline-premium quick-action" data-action="most-expensive" title="Find most expensive VMs"><i class="bi bi-graph-up-arrow me-1"></i>Most Expensive</button>
                                     <button class="btn btn-sm btn-outline-premium quick-action" data-action="linux" title="Show only Linux VMs"><i class="bi bi-ubuntu me-1"></i>Linux Only</button>
                                     <button class="btn btn-sm btn-outline-premium" id="export-btn" title="Export current view to CSV"><i class="bi bi-download me-1"></i>Export View</button>
-                                    <button class="btn btn-sm btn-outline-premium" id="quick-reset-btn" title="Reset all filters and sorting"><i class="bi bi-arrow-clockwise me-1"></i>Reset View</button>
-
+                                    <button class="btn btn-sm btn-primary-premium" id="quick-reset-btn" title="Reset all filters and sorting">
+                                        <i class="bi bi-arrow-clockwise me-1"></i>Reset View
+                                    </button>
                                 </div>
                                 <div class="table-responsive"><table class="table premium-table"><thead><tr><th data-sort="name">VM Name</th><th data-sort="family">Family</th><th data-sort="vcpus">vCPUs</th><th data-sort="memoryGB">Memory</th><th data-sort="os">OS</th><th data-sort="region">Region</th><th data-sort="pricePerHour">Price/hr</th><th data-sort="monthlyPrice">Monthly</th></tr></thead><tbody id="prices-table-body"></tbody></table></div>
                                 <div class="d-flex justify-content-between align-items-center mt-3"><div class="text-muted small" id="table-info">Showing 0 of 0 VMs</div><nav><ul class="pagination pagination-sm mb-0" id="pagination"></ul></nav></div>

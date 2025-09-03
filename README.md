@@ -1,7 +1,3 @@
-Perfect — we can add **Dashboard Overview** as the first screenshot to give a full portfolio view. I’ve now included **Dashboard Overview, Prices, Best-Fit, Analytics, Estimator** in the screenshots table and updated the full README. Here’s the **final, fully polished README**:
-
----
-
 # ☁️ Azure Intelligent Overview
 
 ![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
@@ -45,27 +41,12 @@ It combines **real-time pricing intelligence**, **cost calculators**, and **adva
 | ----------------------------------------------------- | --------------------------------------- | ------------------------------------------ | --------------------------------------------- | --------------------------------------------- |
 | ![Dashboard Overview](assets/screenshot-overview.png) | ![Prices](assets/screenshot-prices.png) | ![Best-Fit](assets/screenshot-bestfit.png) | ![Analytics](assets/screenshot-analytics.png) | ![Estimator](assets/screenshot-estimator.png) |
 
-**Suggested filenames for your `assets` folder:**
-
-* `screenshot-overview.png`
-* `screenshot-prices.png`
-* `screenshot-bestfit.png`
-* `screenshot-analytics.png`
-* `screenshot-estimator.png`
-
-Project path example:
-
-```
-C:\Users\sanil\Projects\Azure-Intelligent-Overview\assets
-```
-
----
 
 ## ✨ Features
 
 * **Modern Dashboard UI** – Responsive interface built with **Bootstrap 5** and custom styles
 * **Live Azure VM Pricing** – Real-time data for all **Azure SKUs, regions, OS types, and spot pricing**
-* **Advanced Filtering** – Filter instantly by **region, OS, VM family, vCPUs, memory, price, and spot status**
+* **Advanced Filtering** – Filter instantly by **region, OS, VM family, vCPUs, memory and price**
 * **Price Calculator (Best-Fit)** – Input workload requirements to get the **top 10 cheapest VM matches**
 * **Cost Estimator** – Calculate **hourly, daily, monthly, and yearly** costs by VM, region, and instance count
 * **Interactive Charts (Analytics)** – Price distributions, VM family breakdowns, and other visual analytics with **Chart.js**
@@ -196,8 +177,4 @@ See [LICENCE](LICENCE) for full details.
 
 ✨ **Azure Intelligent Overview – Smarter Cloud Decisions with Real-Time Azure VM Pricing Intelligence.**
 
----
 
-If you want, I can **also create a fully branded banner image** (`assets/cover.png`) for **all three projects** so they have a consistent, portfolio-ready GitHub appearance.
-
-Do you want me to do that next?

@@ -1,6 +1,4 @@
-Perfect 🚀 — let’s make your **Azure Intelligent Overview** README the absolute best version, matching the professional polish of your other projects (*Cloud Architect Pro* and *CTI Dashboard*) while keeping everything consistent and visually appealing for graduate roles and portfolio presentation.
-
-Here’s the **final README** with badges, screenshots section, live demo placeholder, and polished formatting:
+Perfect — we can add **Dashboard Overview** as the first screenshot to give a full portfolio view. I’ve now included **Dashboard Overview, Prices, Best-Fit, Analytics, Estimator** in the screenshots table and updated the full README. Here’s the **final, fully polished README**:
 
 ---
 
@@ -14,7 +12,7 @@ Here’s the **final README** with badges, screenshots section, live demo placeh
 
 **Azure Intelligent Overview** is a **premium cloud dashboard** for professionals to **visualise, analyse, and optimise Azure VM pricing and specifications**.
 
-It combines **real-time pricing intelligence**, **cost calculators**, and **advanced analytics** to help you make smarter cloud infrastructure decisions.
+It combines **real-time pricing intelligence**, **cost calculators**, and **advanced analytics** to help you make smarter, data-driven decisions when working with Azure cloud infrastructure.
 
 ---
 
@@ -37,31 +35,45 @@ It combines **real-time pricing intelligence**, **cost calculators**, and **adva
 
 🔗 **[View the Dashboard](https://sanilpanchal23.github.io/Azure-Intelligent-Overview/)**
 
-*(Coming soon – hosted via GitHub Pages)*
+*(Hosted via GitHub Pages)*
 
 ---
 
 ## 📸 Screenshots
 
-| Dashboard Overview                            | Price Calculator                                      | Cost Estimator                                     |
-| --------------------------------------------- | ----------------------------------------------------- | -------------------------------------------------- |
-| ![Dashboard](assets/screenshot-dashboard.png) | ![Price Calculator](assets/screenshot-calculator.png) | ![Cost Estimator](assets/screenshot-estimator.png) |
+| Dashboard Overview                                    | Prices                                  | Best-Fit (Price Calculator)                | Analytics                                     | Estimator                                     |
+| ----------------------------------------------------- | --------------------------------------- | ------------------------------------------ | --------------------------------------------- | --------------------------------------------- |
+| ![Dashboard Overview](assets/screenshot-overview.png) | ![Prices](assets/screenshot-prices.png) | ![Best-Fit](assets/screenshot-bestfit.png) | ![Analytics](assets/screenshot-analytics.png) | ![Estimator](assets/screenshot-estimator.png) |
+
+**Suggested filenames for your `assets` folder:**
+
+* `screenshot-overview.png`
+* `screenshot-prices.png`
+* `screenshot-bestfit.png`
+* `screenshot-analytics.png`
+* `screenshot-estimator.png`
+
+Project path example:
+
+```
+C:\Users\sanil\Projects\Azure-Intelligent-Overview\assets
+```
 
 ---
 
 ## ✨ Features
 
-* **Modern Dashboard UI** – Responsive interface with **Bootstrap 5** and custom styling
+* **Modern Dashboard UI** – Responsive interface built with **Bootstrap 5** and custom styles
 * **Live Azure VM Pricing** – Real-time data for all **Azure SKUs, regions, OS types, and spot pricing**
-* **Advanced Filtering** – Filter instantly by **region, OS, family, vCPUs, memory, and spot status**
-* **Price Calculator** – Enter workload requirements to get the **top 10 cheapest VM matches**
-* **Cost Estimator** – Calculate **hourly, daily, monthly, and yearly** costs by VM, region, and count
-* **Interactive Charts** – Visualise pricing distributions and family breakdowns with **Chart.js**
-* **Export to CSV** – Download filtered data for offline analysis
-* **Theme Toggle** – Switch between **light and dark mode**
-* **Automated Price Scanning** – Python scripts pull the latest prices from the **Azure Retail Prices API**
-* **VM Specs Lookup** – Python tool to query and display VM hardware specs
-* **Data Storage** – All prices and metadata stored in **JSON** for easy updates and integration
+* **Advanced Filtering** – Filter instantly by **region, OS, VM family, vCPUs, memory, price, and spot status**
+* **Price Calculator (Best-Fit)** – Input workload requirements to get the **top 10 cheapest VM matches**
+* **Cost Estimator** – Calculate **hourly, daily, monthly, and yearly** costs by VM, region, and instance count
+* **Interactive Charts (Analytics)** – Price distributions, VM family breakdowns, and other visual analytics with **Chart.js**
+* **Export to CSV** – Download filtered VM data for offline analysis
+* **Theme Toggle** – Switch between **light and dark modes** for comfortable viewing
+* **Automated Price Scanning** – Python scripts pull the latest prices from **Azure Retail Prices API**
+* **VM Specs Lookup** – Query hardware specifications using a Python tool
+* **Data Storage** – All pricing and metadata stored in **JSON** for easy updates and integration
 
 ---
 
@@ -77,6 +89,12 @@ README.md
     azure_price_scanner.py # Fetches latest Azure VM prices
     vm_specs_lookup.py     # VM specs lookup tool
     requirements.txt       # Python dependencies
+/assets/
+    screenshot-overview.png
+    screenshot-prices.png
+    screenshot-bestfit.png
+    screenshot-analytics.png
+    screenshot-estimator.png
 ```
 
 ---
@@ -87,7 +105,7 @@ README.md
 
 * **Python 3.10+**
 * **pip** (Python package manager)
-* A modern web browser (Chrome, Edge, Firefox, etc.)
+* Modern web browser (Chrome, Edge, Firefox, etc.)
 
 ### 💻 Installation
 
@@ -111,17 +129,17 @@ README.md
 
 ### 1. Update Azure VM Pricing Data
 
-Fetch the latest prices:
+Run the price scanner:
 
 ```bash
 python azure_price_scanner.py
 ```
 
-Updates `azure_prices.json` with current VM data.
+Updates `azure_prices.json` with current pricing.
 
 ### 2. Lookup VM Specifications
 
-Search VM details interactively:
+Run the specs lookup tool:
 
 ```bash
 python vm_specs_lookup.py
@@ -129,20 +147,18 @@ python vm_specs_lookup.py
 
 ### 3. View the Dashboard
 
-Open `/dashboard/index.html` in your browser for the full experience.
+Open `/dashboard/index.html` in your browser.
 
 ### 4. Explore Dashboard Features
 
-* **Live Status** – See when pricing was last updated
-* **Quick Filters** – Instantly narrow results by specs and pricing
-* **Sorting & Pagination** – Sort large datasets for analysis
-* **Summary Cards** – Quick insights: VM count, regions, families, averages
-* **Price Calculator** – Input workload specs → get cheapest matches
-* **Cost Estimator** – Enter hours and VM count → get full breakdowns
-* **Charts & Analytics** – Visual dashboards powered by **Chart.js**
-* **Export to CSV** – Save and share data offline
-* **Theme Toggle** – Switch between **light/dark UI**
-* **Notifications** – Feedback on actions (updates, errors, exports)
+* **Dashboard Overview** – See a complete summary of VM pricing and analytics
+* **Live Status (Prices)** – Last updated timestamps
+* **Best-Fit Price Calculator** – Quickly find cheapest VM matches for your workload
+* **Analytics** – Interactive charts and breakdowns of VM distributions
+* **Cost Estimator** – Enter usage details → get full hourly/monthly/yearly cost breakdowns
+* **Export to CSV** – Save filtered datasets
+* **Theme Toggle** – Light/dark UI
+* **Notifications** – Instant feedback for updates, exports, and errors
 
 ---
 
@@ -150,18 +166,18 @@ Open `/dashboard/index.html` in your browser for the full experience.
 
 Contributions are welcome!
 
-1. Fork the repository
-2. Create a branch for your feature or fix
+1. Fork the repo
+2. Create a branch for your feature/fix
 3. Open a pull request with a clear description
 
-Ideas for **new analytics, integrations, or UI improvements** are especially encouraged.
+Ideas for **new analytics, UI improvements, or integrations** are highly encouraged.
 
 ---
 
 ## 📜 Licence
 
 Released under the **MIT Licence**.
-See [LICENCE](LICENCE) for details.
+See [LICENCE](LICENCE) for full details.
 
 ---
 
@@ -173,22 +189,15 @@ See [LICENCE](LICENCE) for details.
 
 ## 🙏 Acknowledgements
 
-* **Azure Retail Prices API** for live pricing data
-* **Python, Bootstrap, JavaScript, Chart.js** open-source communities
+* **Azure Retail Prices API** – For live pricing data
+* **Python, Bootstrap, JavaScript, Chart.js** communities – Open-source tools used
 
 ---
 
-✨ **Azure Intelligent Overview – Smarter Cloud Decisions with Real-Time Azure Pricing Intelligence.**
+✨ **Azure Intelligent Overview – Smarter Cloud Decisions with Real-Time Azure VM Pricing Intelligence.**
 
 ---
 
-This version matches the **professional polish** of your other READMEs:
+If you want, I can **also create a fully branded banner image** (`assets/cover.png`) for **all three projects** so they have a consistent, portfolio-ready GitHub appearance.
 
-* ✅ Badges at the top (clear tech stack)
-* ✅ Live demo placeholder
-* ✅ Screenshots section in a clean table
-* ✅ Clear features breakdown (technical + user benefits)
-* ✅ Easy-to-follow setup & usage instructions
-* ✅ Strong closing line
-
-Would you like me to now design a **matching banner cover image** (like a portfolio series) so *Azure Intelligent Overview*, *CTI Dashboard*, and *Cloud Architect Pro* all have a consistent branded look?
+Do you want me to do that next?

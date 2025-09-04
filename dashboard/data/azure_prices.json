@@ -1,10 +1,10 @@
 {
   "metadata": {
-    "generatedAt": "2025-09-04T12:35:59.158701+00:00",
+    "generatedAt": "2025-09-04T13:27:05.239107+00:00",
     "source": "https://prices.azure.com/api/retail/prices",
-    "itemCount": 18097,
+    "itemCount": 18096,
     "summary": {
-      "count": 18097,
+      "count": 18096,
       "regionsCount": 73,
       "regions": [
         "Global",
@@ -139,7 +139,7 @@
         "Windows"
       ],
       "spotCount": 0,
-      "avgPricePerHour": 29.881475,
+      "avgPricePerHour": 29.873445,
       "minPricePerHour": 0.0,
       "maxPricePerHour": 998.0
     }
@@ -41282,16 +41282,6 @@
       "isSpot": false,
       "vcpus": null,
       "memoryGB": null,
-      "pricePerHour": 176.1744,
-      "region": "westeurope"
-    },
-    {
-      "name": "Standard_M624s-312_12_v3",
-      "family": "M",
-      "os": "Windows",
-      "isSpot": false,
-      "vcpus": null,
-      "memoryGB": null,
       "pricePerHour": 147.4704,
       "region": "westeurope"
     },
@@ -44634,6 +44624,16 @@
       "memoryGB": 672,
       "pricePerHour": 6.528,
       "region": "southeastasia"
+    },
+    {
+      "name": "Standard_B32ls_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 1.347,
+      "region": "indonesiacentral"
     },
     {
       "name": "Standard_B32ls_v2",
@@ -119023,16 +119023,6 @@
       "vcpus": 4,
       "memoryGB": 32,
       "pricePerHour": 0.544,
-      "region": "norwayeast"
-    },
-    {
-      "name": "Standard_E4a_v4",
-      "family": "E",
-      "os": "Windows",
-      "isSpot": false,
-      "vcpus": 4,
-      "memoryGB": 32,
-      "pricePerHour": 0.36,
       "region": "norwayeast"
     },
     {

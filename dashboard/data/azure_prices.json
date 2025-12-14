@@ -1,15 +1,16 @@
 {
   "metadata": {
-    "generatedAt": "2025-12-14T16:23:27.277129+00:00",
+    "generatedAt": "2025-12-14T16:46:01.783958+00:00",
     "source": "https://prices.azure.com/api/retail/prices",
-    "itemCount": 7733,
+    "itemCount": 8079,
     "summary": {
-      "count": 7733,
-      "regionsCount": 68,
+      "count": 8079,
+      "regionsCount": 69,
       "regions": [
         "attatlanta1",
         "attdallas1",
         "attdetroit1",
+        "attnewyork1",
         "australiacentral",
         "australiacentral2",
         "australiaeast",
@@ -126,8 +127,8 @@
         "Windows"
       ],
       "spotCount": 0,
-      "avgPricePerHour": 29.757034,
-      "minPricePerHour": 0.011,
+      "avgPricePerHour": 29.819643,
+      "minPricePerHour": 0.0,
       "maxPricePerHour": 998.0
     }
   },
@@ -77461,6 +77462,3466 @@
       "memoryGB": 256,
       "pricePerHour": 5.426,
       "region": "brazilsoutheast"
+    },
+    {
+      "name": "Standard_E8-4ads_v7",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.776,
+      "region": "southafricanorth"
+    },
+    {
+      "name": "Standard_D64ads_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 6.659,
+      "region": "malaysiawest"
+    },
+    {
+      "name": "Standard_FX24ms_v2",
+      "family": "FX",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 3.453,
+      "region": "belgiumcentral"
+    },
+    {
+      "name": "Standard_D4s_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 16,
+      "pricePerHour": 0.468,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_D4s_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 16,
+      "pricePerHour": 0.284,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_E32ds_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 3.776,
+      "region": "northcentralus"
+    },
+    {
+      "name": "Standard_E32ds_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 2.304,
+      "region": "northcentralus"
+    },
+    {
+      "name": "Standard_D16_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 3.5,
+      "pricePerHour": 0.896,
+      "region": "israelnorthwest"
+    },
+    {
+      "name": "Standard_D48ads_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 3.216,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_B2ts_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 0.0139,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_B2ts_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 72.0,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_B2ts_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 138.0,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_M128-64bds_3_v3",
+      "family": "M",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 3892,
+      "pricePerHour": 65.7228,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_D16as_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 3.5,
+      "pricePerHour": 0.878,
+      "region": "germanywestcentral"
+    },
+    {
+      "name": "Standard_E64i_v3",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 5.835,
+      "region": "francesouth"
+    },
+    {
+      "name": "Standard_E16ds_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.152,
+      "region": "westus2"
+    },
+    {
+      "name": "Standard_E64ads_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 5.602,
+      "region": "jioindiawest"
+    },
+    {
+      "name": "Standard_E64ads_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 2.658,
+      "region": "jioindiawest"
+    },
+    {
+      "name": "Standard_NV12ads_A10_v5",
+      "family": "NV",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 1.75,
+      "pricePerHour": 1.687,
+      "region": "usgovvirginia"
+    },
+    {
+      "name": "Standard_D64ads_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 4.883,
+      "region": "southafricanorth"
+    },
+    {
+      "name": "Standard_E8_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.978,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_E8_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.61,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_D2s_v3",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 0.222,
+      "region": "attatlanta1"
+    },
+    {
+      "name": "Standard_D2s_v3",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 0.13,
+      "region": "attatlanta1"
+    },
+    {
+      "name": "Standard_DC96ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 11.165,
+      "region": "qatarcentral"
+    },
+    {
+      "name": "Standard_DC96ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 6.749,
+      "region": "qatarcentral"
+    },
+    {
+      "name": "Standard_D96lds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 10.272,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_D96lds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.856,
+      "region": "japaneast"
+    },
+    {
+      "name": "Dasv4_Type2",
+      "family": "DASV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 5.72,
+      "region": "belgiumcentral"
+    },
+    {
+      "name": "Standard_E8-2as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.05,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_E8-2as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.682,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_D8ads_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.653,
+      "region": "norwayeast"
+    },
+    {
+      "name": "Standard_E32darm_v3",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 0.0,
+      "region": "attnewyork1"
+    },
+    {
+      "name": "Standard_D48d_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 192,
+      "pricePerHour": 3.046,
+      "region": "malaysiawest"
+    },
+    {
+      "name": "Standard_F2ams_v6",
+      "family": "F",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 0.116,
+      "region": "jioindiawest"
+    },
+    {
+      "name": "Standard_D64d_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 256,
+      "pricePerHour": 5.876,
+      "region": "uaecentral"
+    },
+    {
+      "name": "Standard_D2als_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.101,
+      "region": "usgovtexas"
+    },
+    {
+      "name": "Standard_D2als_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 521.0,
+      "region": "usgovtexas"
+    },
+    {
+      "name": "Standard_E8as_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.005,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_NV12ads_V710_v5",
+      "family": "NV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 12,
+      "memoryGB": 112,
+      "pricePerHour": 1.2,
+      "region": "northcentralus"
+    },
+    {
+      "name": "Standard_F8as_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 1.003,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_F8as_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.635,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_D32alds_v7",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 14,
+      "pricePerHour": 1.632,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_D96lds_v7",
+      "family": "D",
+      "os": "Linux",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 7.946,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_M208s_v2",
+      "family": "M",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 208,
+      "memoryGB": 5700,
+      "pricePerHour": 24.987,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_D96_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.936,
+      "region": "belgiumcentral"
+    },
+    {
+      "name": "Standard_D96_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.52,
+      "region": "belgiumcentral"
+    },
+    {
+      "name": "Standard_EC48eds_v6",
+      "family": "EC",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 4.734,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_D96as_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.6,
+      "region": "australiacentral"
+    },
+    {
+      "name": "Standard_D96as_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.184,
+      "region": "australiacentral"
+    },
+    {
+      "name": "Standard_L8s_v3",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.666,
+      "region": "switzerlandwest"
+    },
+    {
+      "name": "Standard_L8s_v3",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.298,
+      "region": "switzerlandwest"
+    },
+    {
+      "name": "Standard_M128-64bds_3_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 3892,
+      "pricePerHour": 51.848,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_M128-64bds_3_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 3892,
+      "pricePerHour": 45.96,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_D4ds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 16,
+      "pricePerHour": 0.36,
+      "region": "brazilsouth"
+    },
+    {
+      "name": "Standard_FX16-8mds_v2",
+      "family": "FX",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 3.064,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_D48_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 3.048,
+      "region": "southafricanorth"
+    },
+    {
+      "name": "Standard_F2ams_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 0.34,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_F2ams_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 0.248,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_F1as_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 0.119,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_F1as_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 0.073,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_DC2ads_v6",
+      "family": "DC",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 0.137,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_DC2ads_v6",
+      "family": "DC",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 706.0,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_D48lds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 4.584,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_D48lds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 2.376,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_E16d_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 2.016,
+      "region": "switzerlandwest"
+    },
+    {
+      "name": "Standard_D16ads_v7",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 3.5,
+      "pricePerHour": 1.104,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_E4ds_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.348,
+      "region": "australiacentral2"
+    },
+    {
+      "name": "Standard_F32ams_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 64,
+      "pricePerHour": 5.2,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_F32ams_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 64,
+      "pricePerHour": 3.728,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_D48ls_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 4.95,
+      "region": "westindia"
+    },
+    {
+      "name": "Standard_D48ls_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 2.742,
+      "region": "westindia"
+    },
+    {
+      "name": "Standard_D48as_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 2.825,
+      "region": "qatarcentral"
+    },
+    {
+      "name": "Standard_E64-16s_v3",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.814,
+      "region": "usgovvirginia"
+    },
+    {
+      "name": "Standard_D8s_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.872,
+      "region": "usgovtexas"
+    },
+    {
+      "name": "Standard_D48d_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 192,
+      "pricePerHour": 5.462,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_D48d_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 192,
+      "pricePerHour": 3.254,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_D8ads_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.524,
+      "region": "usgovarizona"
+    },
+    {
+      "name": "Standard_D2as_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.193,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_EC4as_v5",
+      "family": "EC",
+      "os": "Linux",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.274,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_E8-2s_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.746,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_EC96ias_v5",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 10.382,
+      "region": "eastus"
+    },
+    {
+      "name": "Standard_EC96ias_v5",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.966,
+      "region": "eastus"
+    },
+    {
+      "name": "Standard_D4d_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 16,
+      "pricePerHour": 0.476,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_D4d_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 16,
+      "pricePerHour": 0.292,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_E4-2as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.464,
+      "region": "israelnorthwest"
+    },
+    {
+      "name": "Standard_E4-2as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.28,
+      "region": "israelnorthwest"
+    },
+    {
+      "name": "Standard_E96_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 10.656,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_E96_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 6.24,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_D2s_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 0.161,
+      "region": "uaecentral"
+    },
+    {
+      "name": "Standard_D2s_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 873.0,
+      "region": "uaecentral"
+    },
+    {
+      "name": "Standard_D16ds_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 64,
+      "pricePerHour": 1.821,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_D16ds_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 64,
+      "pricePerHour": 1.085,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_D2lds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.203,
+      "region": "polandcentral"
+    },
+    {
+      "name": "Standard_D2lds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.111,
+      "region": "polandcentral"
+    },
+    {
+      "name": "Standard_F16als_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 2.075,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_F16als_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 1.339,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_FX32-8ms_v2",
+      "family": "FX",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 6.075,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_FX32-8ms_v2",
+      "family": "FX",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 4.603,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_M48bds_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 7.503873,
+      "region": "germanywestcentral"
+    },
+    {
+      "name": "Standard_M48bds_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.295873,
+      "region": "germanywestcentral"
+    },
+    {
+      "name": "Standard_E48as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 5.501,
+      "region": "koreasouth"
+    },
+    {
+      "name": "Standard_E48as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 3.293,
+      "region": "koreasouth"
+    },
+    {
+      "name": "Standard_E8ads_v7",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.832,
+      "region": "israelnorthwest"
+    },
+    {
+      "name": "Standard_DC48ads_cc_v5",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 6.803,
+      "region": "norwaywest"
+    },
+    {
+      "name": "Standard_DC48ads_cc_v5",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 4.595,
+      "region": "norwaywest"
+    },
+    {
+      "name": "Standard_L24aos_v4",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 4.104,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_L24aos_v4",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 3.0,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_F32-8ams_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 64,
+      "pricePerHour": 4.899,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_F32-8ams_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 64,
+      "pricePerHour": 3.427,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_E4-2s_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.523,
+      "region": "brazilsoutheast"
+    },
+    {
+      "name": "Standard_D32s_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 4.743,
+      "region": "switzerlandwest"
+    },
+    {
+      "name": "Standard_D32s_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 3.271,
+      "region": "switzerlandwest"
+    },
+    {
+      "name": "Standard_D48s_v7",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 192,
+      "pricePerHour": 4.748,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_M128ds_v2",
+      "family": "M",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 3892,
+      "pricePerHour": 19.343,
+      "region": "australiacentral2"
+    },
+    {
+      "name": "Standard_H8m",
+      "family": "H",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 112,
+      "pricePerHour": 2.285,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_H8m",
+      "family": "H",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 112,
+      "pricePerHour": 1.383,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_D64as_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 3.578,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_DC96ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 11.29,
+      "region": "usgovtexas"
+    },
+    {
+      "name": "Standard_E2ads_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 0.175,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_E2ads_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 907.0,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_E20as_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 1.593,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_D48d_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 192,
+      "pricePerHour": 5.232,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_D48d_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 192,
+      "pricePerHour": 3.024,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_M128ms",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 3892,
+      "pricePerHour": 42.7529,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_M128ms",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 3892,
+      "pricePerHour": 33.6269,
+      "region": "uksouth"
+    },
+    {
+      "name": "Easv4_Type2",
+      "family": "EASV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 6.653,
+      "region": "eastus"
+    },
+    {
+      "name": "Standard_E64s_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 5.821,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_L96ias_v3",
+      "family": "L",
+      "os": "Linux",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.557,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_D128ls_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 3.5,
+      "pricePerHour": 6.284,
+      "region": "mexicocentral"
+    },
+    {
+      "name": "Standard_E32ads_v7",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 2.726,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_E20d_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 1.68,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_E96_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 11.04,
+      "region": "canadaeast"
+    },
+    {
+      "name": "Standard_E96_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 6.624,
+      "region": "canadaeast"
+    },
+    {
+      "name": "Easv4_Type2",
+      "family": "EASV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 7.983,
+      "region": "westcentralus"
+    },
+    {
+      "name": "Standard_E16ds_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.392,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_E20s_v3",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 20,
+      "memoryGB": 160,
+      "pricePerHour": 1.46,
+      "region": "eastus2"
+    },
+    {
+      "name": "Edsv5_Type1",
+      "family": "EDSV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.134,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_M624s_12_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 155.5,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_M624s_12_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 126.79,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_E4-2as_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.436,
+      "region": "westus"
+    },
+    {
+      "name": "Standard_E16-4as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.845,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_E16-4as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.109,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_E96-48ds_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 12.265,
+      "region": "northcentralus"
+    },
+    {
+      "name": "Standard_E96-48ds_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 7.849,
+      "region": "northcentralus"
+    },
+    {
+      "name": "Standard_L48s_v4",
+      "family": "L",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 384,
+      "pricePerHour": 4.368,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_D2pds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.102,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_D2pds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 467.0,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_D2pds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 903.0,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_D48ls_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 2.697,
+      "region": "japanwest"
+    },
+    {
+      "name": "Standard_F80alds_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 9.801,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_F80alds_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 6.121,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_D8lds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.504,
+      "region": "australiaeast"
+    },
+    {
+      "name": "Standard_D4als_v7",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 0.177,
+      "region": "mexicocentral"
+    },
+    {
+      "name": "Standard_D4als_v7",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 914.0,
+      "region": "mexicocentral"
+    },
+    {
+      "name": "Standard_E8-2as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.242,
+      "region": "southafricawest"
+    },
+    {
+      "name": "Standard_E8-2as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.874,
+      "region": "southafricawest"
+    },
+    {
+      "name": "Standard_FX64-32mds_v2",
+      "family": "FX",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 11.697,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_FX64-32mds_v2",
+      "family": "FX",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 8.753,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_E32-8s_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 3.68,
+      "region": "canadacentral"
+    },
+    {
+      "name": "Standard_E32-8s_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 2.208,
+      "region": "canadacentral"
+    },
+    {
+      "name": "Standard_E64s_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 7.432,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_E64s_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.488,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_E4as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.458,
+      "region": "japanwest"
+    },
+    {
+      "name": "Standard_E4as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.274,
+      "region": "japanwest"
+    },
+    {
+      "name": "Standard_E8-4ds_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.043,
+      "region": "brazilsouth"
+    },
+    {
+      "name": "Standard_D2ls_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.106,
+      "region": "israelnorthwest"
+    },
+    {
+      "name": "Standard_D2ls_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 548.0,
+      "region": "israelnorthwest"
+    },
+    {
+      "name": "Standard_L8s_v3",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.212,
+      "region": "uaenorth"
+    },
+    {
+      "name": "Standard_L8s_v3",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.844,
+      "region": "uaenorth"
+    },
+    {
+      "name": "Standard_DC32ads_v6",
+      "family": "DC",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 2.336,
+      "region": "westindia"
+    },
+    {
+      "name": "Standard_F8-4ams_v7",
+      "family": "F",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.866,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_EC4as_cc_v5",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.436,
+      "region": "westus"
+    },
+    {
+      "name": "Standard_EC4as_cc_v5",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.252,
+      "region": "westus"
+    },
+    {
+      "name": "Standard_D2alds_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 0.177,
+      "region": "norwaywest"
+    },
+    {
+      "name": "Standard_D2alds_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 7,
+      "pricePerHour": 916.0,
+      "region": "norwaywest"
+    },
+    {
+      "name": "Standard_E112ibds_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 19.366,
+      "region": "swedensouth"
+    },
+    {
+      "name": "Standard_E112ibds_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 14.214,
+      "region": "swedensouth"
+    },
+    {
+      "name": "Standard_D32ds_v7",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 4.465,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_M32-8ms",
+      "family": "M",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 872,
+      "pricePerHour": 7.744,
+      "region": "uksouth"
+    },
+    {
+      "name": "Standard_E8-2s_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.96,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_E8-2s_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.592,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_DC96ads_v5",
+      "family": "DC",
+      "os": "Linux",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 3.221,
+      "region": "jioindiawest"
+    },
+    {
+      "name": "Standard_E20d_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 2.747,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_E20d_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 1.827,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_M208-104s_v2",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 208,
+      "memoryGB": 5700,
+      "pricePerHour": 38.571,
+      "region": "southeastasia"
+    },
+    {
+      "name": "Standard_M208-104s_v2",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 208,
+      "memoryGB": 5700,
+      "pricePerHour": 29.003,
+      "region": "southeastasia"
+    },
+    {
+      "name": "Standard_E64s_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 5.04,
+      "region": "usgovtexas"
+    },
+    {
+      "name": "Standard_E32-8as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 4.384,
+      "region": "uaecentral"
+    },
+    {
+      "name": "Standard_E32-8as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 2.912,
+      "region": "uaecentral"
+    },
+    {
+      "name": "Standard_E32d_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 4.24,
+      "region": "usgovvirginia"
+    },
+    {
+      "name": "Standard_E16-8ads_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.499,
+      "region": "norwayeast"
+    },
+    {
+      "name": "Standard_D4ads_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 0.242,
+      "region": "francecentral"
+    },
+    {
+      "name": "DCadsv6_Type1",
+      "family": "DCADSV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 12.929,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_EC4as_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.454,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_EC4as_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.27,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_E96-24s_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 9.798,
+      "region": "attdallas1"
+    },
+    {
+      "name": "Standard_D64plds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 256,
+      "pricePerHour": 3.232,
+      "region": "australiaeast"
+    },
+    {
+      "name": "Standard_E48s_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 384,
+      "pricePerHour": 3.905,
+      "region": "uaenorth"
+    },
+    {
+      "name": "Standard_HB120-64rs_v2",
+      "family": "HB",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.84,
+      "region": "canadacentral"
+    },
+    {
+      "name": "Standard_HB120-64rs_v2",
+      "family": "HB",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 4.32,
+      "region": "canadacentral"
+    },
+    {
+      "name": "Standard_E32-16as_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 3.664,
+      "region": "belgiumcentral"
+    },
+    {
+      "name": "Standard_D8ds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.896,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_D8ds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.528,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_D16lds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 3.5,
+      "pricePerHour": 0.806,
+      "region": "indonesiacentral"
+    },
+    {
+      "name": "Standard_D8as_v7",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.363,
+      "region": "eastus"
+    },
+    {
+      "name": "Standard_D64d_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 256,
+      "pricePerHour": 7.283,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_D64d_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 256,
+      "pricePerHour": 4.339,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_FX96-24mds_v2",
+      "family": "FX",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 15.76,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_B32as_v2",
+      "family": "B",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 1.687,
+      "region": "westindia"
+    },
+    {
+      "name": "Standard_B32as_v2",
+      "family": "B",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 1.54,
+      "region": "westindia"
+    },
+    {
+      "name": "Standard_F64ads_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 128,
+      "pricePerHour": 10.087,
+      "region": "japanwest"
+    },
+    {
+      "name": "Standard_F64ads_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 128,
+      "pricePerHour": 7.143,
+      "region": "japanwest"
+    },
+    {
+      "name": "Standard_E20d_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 2.896,
+      "region": "swedensouth"
+    },
+    {
+      "name": "Standard_E20d_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 1.976,
+      "region": "swedensouth"
+    },
+    {
+      "name": "Standard_E8-2ads_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.572,
+      "region": "malaysiawest"
+    },
+    {
+      "name": "Standard_D8as_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.807,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_D8as_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.439,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_EC96ads_v5",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 12.744,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_EC96ads_v5",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 8.328,
+      "region": "eastasia"
+    },
+    {
+      "name": "Standard_D32-16s_v3",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 14,
+      "pricePerHour": 1.792,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_E64i_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 7.322,
+      "region": "polandcentral"
+    },
+    {
+      "name": "Standard_E64i_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.378,
+      "region": "polandcentral"
+    },
+    {
+      "name": "Standard_D8ds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.848,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_D8ds_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.48,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_E96a_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 6.048,
+      "region": "eastus"
+    },
+    {
+      "name": "Standard_E64d_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 8.128,
+      "region": "westus"
+    },
+    {
+      "name": "Standard_E64d_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 5.184,
+      "region": "westus"
+    },
+    {
+      "name": "Standard_NC4as_T4_v3",
+      "family": "NC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.799,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_NC4as_T4_v3",
+      "family": "NC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.615,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_E128-32ds_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 12.625,
+      "region": "southeastasia"
+    },
+    {
+      "name": "Standard_E16ds_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 2.291,
+      "region": "attatlanta1"
+    },
+    {
+      "name": "Standard_E16ds_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.555,
+      "region": "attatlanta1"
+    },
+    {
+      "name": "Standard_L80as_v4",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 13.312,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_L80as_v4",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.632,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_D8ads_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.808,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_D8ads_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.44,
+      "region": "swedencentral"
+    },
+    {
+      "name": "Standard_E64-32as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 7.808,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_E64-32as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.864,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_E64-16as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 7.328,
+      "region": "austriaeast"
+    },
+    {
+      "name": "Standard_E64-16as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.384,
+      "region": "austriaeast"
+    },
+    {
+      "name": "Standard_E32-8s_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 5.862,
+      "region": "brazilsoutheast"
+    },
+    {
+      "name": "Standard_E32-8s_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 4.39,
+      "region": "brazilsoutheast"
+    },
+    {
+      "name": "Standard_B16als_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 0.825,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_D64lds_v7",
+      "family": "D",
+      "os": "Linux",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 256,
+      "pricePerHour": 3.704,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_E16d_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.979,
+      "region": "norwaywest"
+    },
+    {
+      "name": "Standard_E64a_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.736,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_F16as_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 1.829,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_F16as_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 1.093,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_E2d_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 0.252,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_E2d_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 0.16,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_D2ds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 0.158,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_D2ds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 815.0,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_D32s_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 2.33,
+      "region": "francesouth"
+    },
+    {
+      "name": "Standard_E48s_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 384,
+      "pricePerHour": 5.938,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_E48s_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 48,
+      "memoryGB": 384,
+      "pricePerHour": 3.73,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_E32as_v7",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 2.73,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_F8als_v6",
+      "family": "F",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.63,
+      "region": "australiasoutheast"
+    },
+    {
+      "name": "Standard_D16ds_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 64,
+      "pricePerHour": 1.246,
+      "region": "usgovarizona"
+    },
+    {
+      "name": "Standard_F16as_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 2.298,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_F16as_v6",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 32,
+      "pricePerHour": 1.562,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_E16-4as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.83,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_E16-4as_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.094,
+      "region": "ukwest"
+    },
+    {
+      "name": "Standard_E4-2as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.486,
+      "region": "westcentralus"
+    },
+    {
+      "name": "Standard_E4-2as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.302,
+      "region": "westcentralus"
+    },
+    {
+      "name": "Standard_E16-8as_v7",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.365,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_B32s_v2",
+      "family": "B",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 1.581,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_B32s_v2",
+      "family": "B",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 128,
+      "pricePerHour": 1.434,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_DC8ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.884,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_DC8ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.516,
+      "region": "centralus"
+    },
+    {
+      "name": "Standard_E16-4as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 2.071,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_E16-4as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.335,
+      "region": "chilecentral"
+    },
+    {
+      "name": "Standard_E32-8ads_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 1.329,
+      "region": "jioindiacentral"
+    },
+    {
+      "name": "Standard_FX32-16ms_v2",
+      "family": "FX",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 5.723,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_FX32-16ms_v2",
+      "family": "FX",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 4.251,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_E96bds_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 13.968,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_E96bds_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 9.552,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_D8als_v7",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.757,
+      "region": "polandcentral"
+    },
+    {
+      "name": "Standard_D8als_v7",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.389,
+      "region": "polandcentral"
+    },
+    {
+      "name": "Standard_E8-4ads_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.644,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_E8ads_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.892,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_E8ads_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.524,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_E2as_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 0.192,
+      "region": "francesouth"
+    },
+    {
+      "name": "Standard_E2as_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 994.0,
+      "region": "francesouth"
+    },
+    {
+      "name": "Standard_E32ds_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 3.661,
+      "region": "uaecentral"
+    },
+    {
+      "name": "Standard_M624s-156_12_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 133.9686,
+      "region": "jioindiawest"
+    },
+    {
+      "name": "Standard_M624s-156_12_v3",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 126.7926,
+      "region": "jioindiawest"
+    },
+    {
+      "name": "Standard_M32s",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 872,
+      "pricePerHour": 5.474,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_M32s",
+      "family": "M",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 872,
+      "pricePerHour": 4.002,
+      "region": "northeurope"
+    },
+    {
+      "name": "Standard_B2pls_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 8,
+      "pricePerHour": 0.0428,
+      "region": "eastus"
+    },
+    {
+      "name": "Standard_E4-2as_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 32,
+      "pricePerHour": 0.154,
+      "region": "centralindia"
+    },
+    {
+      "name": "Standard_E16as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 2.317,
+      "region": "germanynorth"
+    },
+    {
+      "name": "Standard_E16as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.581,
+      "region": "germanynorth"
+    },
+    {
+      "name": "Standard_D32as_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 14,
+      "pricePerHour": 1.792,
+      "region": "westus"
+    },
+    {
+      "name": "Standard_D64as_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 2.752,
+      "region": "westus3"
+    },
+    {
+      "name": "Standard_D16ds_v7",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 64,
+      "pricePerHour": 1.782,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_D8lds_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.596,
+      "region": "brazilsouth"
+    },
+    {
+      "name": "Standard_D16ads_v7",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 3.5,
+      "pricePerHour": 1.157,
+      "region": "usgovvirginia"
+    },
+    {
+      "name": "Standard_E64i_v3",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.801,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_D96as_v6",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.472,
+      "region": "usgovtexas"
+    },
+    {
+      "name": "Standard_DC64ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 7.232,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_DC64ads_v6",
+      "family": "DC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 4.288,
+      "region": "spaincentral"
+    },
+    {
+      "name": "Standard_E16-4as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 2.101,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_E16-4as_v6",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.365,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_D64_v3",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 256,
+      "pricePerHour": 3.584,
+      "region": "israelcentral"
+    },
+    {
+      "name": "Standard_B4as_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 0.117,
+      "region": "centralindia"
+    },
+    {
+      "name": "Standard_E64-32ds_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 5.568,
+      "region": "japaneast"
+    },
+    {
+      "name": "Standard_NV6ads_A10_v5",
+      "family": "NV",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 1,
+      "memoryGB": 1.75,
+      "pricePerHour": 0.59,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_M64bs_v3",
+      "family": "M",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 1742,
+      "pricePerHour": 6.7,
+      "region": "usgovvirginia"
+    },
+    {
+      "name": "Standard_D8ls_v5",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.479,
+      "region": "southindia"
+    },
+    {
+      "name": "Standard_F80amds_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 13.269,
+      "region": "mexicocentral"
+    },
+    {
+      "name": "Standard_F80amds_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 9.589,
+      "region": "mexicocentral"
+    },
+    {
+      "name": "Standard_EC8ads_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 1.198,
+      "region": "norwayeast"
+    },
+    {
+      "name": "Standard_EC8ads_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.83,
+      "region": "norwayeast"
+    },
+    {
+      "name": "Standard_E32ds_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 2.784,
+      "region": "southeastasia"
+    },
+    {
+      "name": "Standard_D96as_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 9.629,
+      "region": "westcentralus"
+    },
+    {
+      "name": "Standard_D96as_v6",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": null,
+      "memoryGB": null,
+      "pricePerHour": 5.213,
+      "region": "westcentralus"
+    },
+    {
+      "name": "Standard_E8-4ads_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 1.0,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_E8-4ads_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 64,
+      "pricePerHour": 0.632,
+      "region": "westeurope"
+    },
+    {
+      "name": "Standard_E64-16ads_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 6.643,
+      "region": "switzerlandnorth"
+    },
+    {
+      "name": "Standard_E32-8ads_v5",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 256,
+      "pricePerHour": 3.598,
+      "region": "southafricawest"
+    },
+    {
+      "name": "Standard_L16s_v4",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 2.406,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_L16s_v4",
+      "family": "L",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 16,
+      "memoryGB": 128,
+      "pricePerHour": 1.67,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_E128-64s_v6",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 128,
+      "memoryGB": 512,
+      "pricePerHour": 10.148,
+      "region": "australiacentral2"
+    },
+    {
+      "name": "Standard_F32-16ams_v7",
+      "family": "F",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 32,
+      "memoryGB": 64,
+      "pricePerHour": 3.363,
+      "region": "italynorth"
+    },
+    {
+      "name": "Standard_D32_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 14,
+      "pricePerHour": 1.84,
+      "region": "austriaeast"
+    },
+    {
+      "name": "Standard_EC8as_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 1.117,
+      "region": "germanynorth"
+    },
+    {
+      "name": "Standard_EC8as_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 0.749,
+      "region": "germanynorth"
+    },
+    {
+      "name": "Standard_D48as_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 4.896,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_D48as_v4",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 2.688,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_E2s_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 0.251,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_E2s_v3",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 16,
+      "pricePerHour": 0.159,
+      "region": "newzealandnorth"
+    },
+    {
+      "name": "Standard_E96-24s_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 11.712,
+      "region": "germanywestcentral"
+    },
+    {
+      "name": "Standard_E96-24s_v5",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 96,
+      "memoryGB": 672,
+      "pricePerHour": 7.296,
+      "region": "germanywestcentral"
+    },
+    {
+      "name": "Standard_EC48as_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 5.4,
+      "region": "canadaeast"
+    },
+    {
+      "name": "Standard_EC48as_v6",
+      "family": "EC",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 16,
+      "pricePerHour": 3.192,
+      "region": "canadaeast"
+    },
+    {
+      "name": "Standard_D48_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 4.896,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_D48_v5",
+      "family": "D",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 28,
+      "pricePerHour": 2.688,
+      "region": "francecentral"
+    },
+    {
+      "name": "Standard_B8ls_v2",
+      "family": "B",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 8,
+      "memoryGB": 32,
+      "pricePerHour": 0.619,
+      "region": "brazilsoutheast"
+    },
+    {
+      "name": "Standard_D64as_v4",
+      "family": "D",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 3.072,
+      "region": "eastus2"
+    },
+    {
+      "name": "Standard_F48as_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 6.134,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_F48as_v7",
+      "family": "F",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 4,
+      "memoryGB": 8,
+      "pricePerHour": 3.926,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_E128-32as_v7",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 2,
+      "memoryGB": 4,
+      "pricePerHour": 9.408,
+      "region": "uaenorth"
+    },
+    {
+      "name": "Standard_E64-32as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 7.782,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_E64-32as_v4",
+      "family": "E",
+      "os": "Windows",
+      "isSpot": false,
+      "vcpus": 64,
+      "memoryGB": 432,
+      "pricePerHour": 4.838,
+      "region": "southcentralus"
+    },
+    {
+      "name": "Standard_E20s_v4",
+      "family": "E",
+      "os": "Unknown",
+      "isSpot": false,
+      "vcpus": 20,
+      "memoryGB": 160,
+      "pricePerHour": 1.51,
+      "region": "australiaeast"
     }
   ]
 }
